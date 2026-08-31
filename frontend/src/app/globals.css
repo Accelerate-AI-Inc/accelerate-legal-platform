@@ -1,0 +1,338 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../shared/ui/TokensUI.css";
+@import "../shared/ui/SurfaceUI.css";
+@import "../shared/ui/RoleTokensUI.css";
+
+/* Faces are loaded by next/font in layout.tsx; the add-in maps the same three
+   roles onto its own <link>-loaded files. */
+@theme inline {
+    --font-sans: var(--font-inter-tight);
+    --font-serif: var(--font-newsreader);
+    --font-mono: var(--font-plex-mono);
+}
+
+@layer utilities {
+    /* The editorial label device. Replaces decorative pill badges for
+       statuses, metadata keys, and breadcrumb eyebrows. */
+    .text-eyebrow {
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        line-height: 1rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* Display type. Page titles, empty-state headings, hero copy. */
+    .text-display {
+        font-family: var(--font-serif);
+        font-weight: 400;
+        letter-spacing: -0.011em;
+    }
+
+    /* Full-bleed masthead rule. */
+    .rule-b {
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .rule-b-strong {
+        border-bottom: 1px solid var(--rule-strong);
+    }
+
+    .rule-t {
+        border-top: 1px solid var(--rule);
+    }
+
+    .rule-r {
+        border-right: 1px solid var(--rule);
+    }
+
+    .sidebar-fade-in {
+        animation: sidebarFadeIn 0.3s ease-out forwards;
+        animation-delay: 0.1s;
+        opacity: 0;
+    }
+
+    .sidebar-fade-in-2 {
+        animation: sidebarFadeIn 0.3s ease-out forwards;
+        animation-delay: 0.2s;
+        opacity: 0;
+    }
+
+    .sidebar-fade-in-3 {
+        animation: sidebarFadeIn 0.3s ease-out forwards;
+        animation-delay: 0.25s;
+        opacity: 0;
+    }
+
+    @keyframes sidebarFadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% + 100px));
+        }
+    }
+
+    @keyframes shimmer {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: -200% 0;
+        }
+    }
+
+    .animate-shimmer {
+        animation: shimmer 8s linear infinite;
+    }
+}
+
+/* ─── Tiptap WYSIWYG workflow editor ────────────────────────────── */
+.workflow-editor-content {
+    min-height: 100%;
+    padding: 1rem 1.25rem;
+    outline: none;
+    font-size: 0.875rem;
+    color: var(--editor-text);
+    line-height: 1.65;
+    font-family: var(--font-serif);
+}
+
+.workflow-editor-content h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--editor-heading);
+    margin-top: 1.25rem;
+    margin-bottom: 0.375rem;
+    line-height: 1.25;
+}
+
+.workflow-editor-content h2 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--editor-heading);
+    margin-top: 0.875rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+}
+
+.workflow-editor-content h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--editor-heading);
+    margin-top: 0.625rem;
+    margin-bottom: 0.125rem;
+    line-height: 1.35;
+}
+
+.workflow-editor-content h1:first-child,
+.workflow-editor-content h2:first-child,
+.workflow-editor-content h3:first-child {
+    margin-top: 0;
+}
+
+.workflow-editor-content p {
+    margin-bottom: 0.5rem;
+}
+
+.workflow-editor-content p:last-child {
+    margin-bottom: 0;
+}
+
+.workflow-editor-content ul {
+    list-style-type: disc;
+    padding-left: 1.375rem;
+    margin-bottom: 0.5rem;
+}
+
+.workflow-editor-content ol {
+    list-style-type: decimal;
+    padding-left: 1.375rem;
+    margin-bottom: 0.5rem;
+}
+
+.workflow-editor-content li {
+    margin-bottom: 0.125rem;
+}
+
+.workflow-editor-content li > p {
+    margin-bottom: 0;
+}
+
+.workflow-editor-content strong {
+    font-weight: 600;
+    color: var(--editor-strong-text);
+}
+
+.workflow-editor-content em {
+    font-style: italic;
+}
+
+.workflow-editor-content .tableWrapper {
+    margin: 0.75rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--editor-border);
+    border-radius: var(--radius-sm);
+}
+
+.workflow-editor-content .tableWrapper:first-child {
+    margin-top: 0;
+}
+
+.workflow-editor-content .tableWrapper:last-child {
+    margin-bottom: 0;
+}
+
+.workflow-editor-content table {
+    width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: left;
+    font-size: 0.75rem;
+}
+
+.workflow-editor-content thead {
+    background: var(--editor-table-header);
+}
+
+.workflow-editor-content th,
+.workflow-editor-content td {
+    border-right: 1px solid var(--editor-grid-line);
+    border-bottom: 1px solid var(--editor-grid-line);
+    padding: 0.5rem 0.75rem;
+    vertical-align: top;
+    word-break: break-word;
+}
+
+.workflow-editor-content th:last-child,
+.workflow-editor-content td:last-child {
+    border-right: 0;
+}
+
+.workflow-editor-content tr:last-child td {
+    border-bottom: 0;
+}
+
+.workflow-editor-content th {
+    color: var(--editor-text);
+    font-weight: 600;
+    font-family: var(--font-sans);
+}
+
+.workflow-editor-content td {
+    color: var(--editor-muted-text);
+}
+
+.workflow-editor-content th p,
+.workflow-editor-content td p {
+    min-height: 1.25rem;
+    margin-bottom: 0;
+}
+
+/* ─── PDF text layer ─────────────────────────────────────────────── */
+.pdf-text-layer {
+    overflow: hidden;
+    opacity: 1;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+}
+
+.pdf-text-layer > span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: text;
+    transform-origin: 0% 0%;
+}
+
+.pdf-text-layer .pdf-text-highlight {
+    background-color: var(--pdf-highlight-background);
+    border-radius: 2px;
+    position: static;
+}
+
+.docx-view-container span.docx-text-highlight,
+.docx-view-container .docx-text-highlight {
+    background-color: var(--docx-highlight-background) !important;
+    border-radius: 2px;
+    padding: 0 1px;
+    color: inherit !important;
+}
+
+.case-document-content span.case-quote-highlight,
+.case-document-content .case-quote-highlight {
+    background-color: var(--case-highlight-background) !important;
+    border-radius: 2px;
+    padding: 0 1px;
+    color: inherit !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* ─── docx-preview tracked changes ───────────────────────────────── */
+.docx-view-container ins {
+    color: var(--positive);
+    text-decoration: none;
+    background-color: var(--positive-wash);
+}
+
+.docx-view-container del {
+    color: var(--critical);
+    text-decoration: line-through;
+    background-color: var(--critical-wash);
+}
+
+/* Kill docx-preview's default dark-gray wrapper chrome — let the scroll
+   container's own bg show through. */
+.docx-view-container .docx-wrapper {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.docx-view-container .docx-wrapper > section.docx {
+    margin: 0 auto 16px;
+    border: 1px solid var(--rule);
+}
+
+.docx-view-container .docx-edit-flash {
+    animation: docxEditFlash 2s ease-out;
+    border-radius: 2px;
+}
+
+/* Optimistic Accept/Reject: instantly hide rejected side / de-style kept side.
+   These are ephemeral DOM mutations; the real re-render replaces the markup. */
+.docx-view-container .docx-edit-hidden {
+    display: none !important;
+}
+
+.docx-view-container ins.docx-edit-kept,
+.docx-view-container del.docx-edit-kept {
+    color: inherit !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+}
+
+@keyframes docxEditFlash {
+    0%,
+    20% {
+        background-color: var(--edit-flash-strong);
+        box-shadow: 0 0 0 2px var(--edit-flash-strong);
+    }
+    100% {
+        background-color: var(--edit-flash-fade);
+        box-shadow: 0 0 0 2px var(--edit-flash-fade);
+    }
+}

@@ -1,0 +1,20 @@
+/*
+ * Word add-in token entry.
+ *
+ * The add-in bundles its task pane independently of Next.js, so it needs its
+ * own stylesheet entry — but the values themselves must not be forked. Both
+ * targets import the same TokensUI.css; the only thing declared here is the
+ * font mapping, because the add-in loads its faces from a <link> in
+ * index.html rather than through next/font.
+ *
+ * Import AFTER `@import "tailwindcss";` so the @theme mappings and base layer
+ * apply.
+ */
+
+@import "../../../../frontend/src/shared/ui/TokensUI.css";
+
+@theme inline {
+    --font-sans: var(--font-inter-tight);
+    --font-serif: var(--font-newsreader);
+    --font-mono: var(--font-plex-mono);
+}

@@ -1,0 +1,86 @@
+import { cn } from "@/app/lib/utils";
+import { Loader2 } from "lucide-react";
+
+type SettingsToggleSize = "sm" | "md";
+
+const sizeClasses: Record<
+    SettingsToggleSize,
+    {
+        track: string;
+        thumb: string;
+        translate: string;
+    }
+> = {
+    sm: {
+        track: "h-4 w-7 p-0.5",
+        thumb: "h-3 w-3",
+        translate: "translate-x-3",
+    },
+    md: {
+        track: "h-5 w-9 p-0.5",
+        thumb: "h-4 w-4",
+        translate: "translate-x-4",
+    },
+};
+
+export function SettingsToggle({
+    checked,
+    disabled,
+    loading,
+    onChange,
+    size = "sm",
+    label,
+    className,
+}: {
+    checked: boolean;
+    disabled?: boolean;
+    loading?: boolean;
+    onChange: (checked: boolean) => void;
+    size?: SettingsToggleSize;
+    label?: string;
+    className?: string;
+}) {
+    const sizes = sizeClasses[size];
+    const button = (
+        <button
+            type="button"
+            role="switch"
+            aria-checked={checked}
+            disabled={disabled || loading}
+            onClick={() => onChange(!checked)}
+            className={cn(
+                "flex shrink-0 items-center rounded-full transition-colors",
+                checked ? "bg-positive" : "bg-surface-sunk",
+                "disabled:cursor-not-allowed disabled:opacity-40",
+                sizes.track,
+            )}
+        >
+            <span
+                className={cn(
+                    "flex items-center justify-center rounded-full bg-surface transition-transform",
+                    sizes.thumb,
+                    checked ? sizes.translate : "translate-x-0",
+                )}
+            >
+                {loading && (
+                    <Loader2 className="h-2.5 w-2.5 animate-spin text-ink-faint" />
+                )}
+            </span>
+        </button>
+    );
+
+    if (!label) return button;
+
+    return (
+        <label
+            className={cn(
+                "inline-flex shrink-0 items-center gap-1.5 text-xs font-medium",
+                checked ? "text-positive" : "text-ink-muted",
+                className,
+            )}
+        >
+            <span>{label}</span>
+            {button}
+        </label>
+    );
+}

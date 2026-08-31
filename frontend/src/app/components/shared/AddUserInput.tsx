@@ -1,0 +1,129 @@
+"use client";
+
+import { useState } from "react";
+import type { KeyboardEvent } from "react";
+import { Loader2, UserPlus } from "lucide-react";
+import {
+    lookupUserByEmail,
+    type UserLookupResult,
+} from "@/app/lib/accelerateApi";
+import { PillButton } from "@/app/components/ui/pill-button";
+import { cn } from "@/app/lib/utils";
+import { userFacingApiError } from "@/app/lib/userFacingError";
+import { SURFACE_INSET_CLASS } from "@/shared/ui/SurfaceUI";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+interface AddUserInputProps {
+    onAdd: (user: UserLookupResult) => Promise<void> | void;
+    validateEmail?: (email: string) => Promise<string | null> | string | null;
+    busy?: boolean;
+    placeholder?: string;
+    autoFocus?: boolean;
+    submitLabel?: string;
+    className?: string;
+}
+
+export function AddUserInput({
+    onAdd,
+    validateEmail,
+    busy = false,
+    placeholder = "Add by email...",
+    autoFocus = false,
+    submitLabel = "Add user",
+    className,
+}: AddUserInputProps) {
+    const [input, setInput] = useState("");
+    const [checking, setChecking] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const trimmedEmail = input.trim().toLowerCase();
+    const showAddButton = trimmedEmail.length > 0;
+
+    async function commitUser() {
+        const email = trimmedEmail;
+        if (!email || busy || checking) return;
+        if (!EMAIL_RE.test(email)) {
+            setError("Enter a valid email.");
+            return;
+        }
+
+        setError(null);
+        setChecking(true);
+        try {
+            const validationError = await validateEmail?.(email);
+            if (validationError) {
+                setError(validationError);
+                return;
+            }
+
+            const user = await lookupUserByEmail(email);
+            if (!user.exists) {
+                setError(`${email} does not belong to a Accelerate Legal user.`);
+                return;
+            }
+
+            await onAdd(user);
+            setInput("");
+        } catch (err) {
+            setError(
+                userFacingApiError(
+                    err,
+                    "Could not add this user. Try again.",
+                ),
+            );
+        } finally {
+            setChecking(false);
+        }
+    }
+
+    function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+        if (event.key === "Enter" || event.key === ",") {
+            event.preventDefault();
+            void commitUser();
+        }
+    }
+
+    return (
+        <div>
+            <div
+                className={cn(
+                    `flex min-h-10 items-center gap-2 rounded-sm px-3 py-1.5 ${SURFACE_INSET_CLASS} transition-colors`,
+                    className,
+                )}
+            >
+                <UserPlus className="h-3.5 w-3.5 shrink-0 text-ink-faint" />
+                <input
+                    type="email"
+                    value={input}
+                    onChange={(event) => {
+                        setInput(event.target.value);
+                        setError(null);
+                    }}
+                    onKeyDown={handleKeyDown}
+                    placeholder={placeholder}
+                    className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-faint"
+                    autoFocus={autoFocus}
+                />
+                {showAddButton && (
+                    <PillButton
+                        tone="accent"
+                        size="sm"
+                        type="button"
+                        onMouseDown={(event) => event.preventDefault()}
+                        onClick={() => void commitUser()}
+                        disabled={busy || checking}
+                        title={submitLabel}
+                        className="h-6 shrink-0 px-2.5 text-[11px] leading-none"
+                    >
+                        {(busy || checking) && (
+                            <Loader2 className="h-3 w-3 animate-spin" />
+                        )}
+                        Add
+                    </PillButton>
+                )}
+            </div>
+            {error && <p className="mt-1.5 text-xs text-critical">{error}</p>}
+        </div>
+    );
+}

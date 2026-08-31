@@ -1,0 +1,208 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Accelerate Legal — the token layer.
+
+   Single source of truth for color and radius, imported by BOTH entry
+   points: the web app (frontend/src/app/globals.css) and the Word add-in
+   (word-addin/src/shared/styles/tokens.css). Do not fork it — a value that
+   lives in only one of the two targets is a divergence waiting to happen.
+
+   Font variables are deliberately NOT set here: the web supplies them via
+   next/font and the add-in via a Google Fonts <link>, so each entry maps
+   --font-sans / --font-serif / --font-mono in its own small @theme block.
+
+   See docs/design-system.md for what each token means and when to use it.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    /* Editorial surfaces and ink. */
+    --color-paper: var(--paper);
+    --color-surface: var(--surface);
+    --color-surface-sunk: var(--surface-sunk);
+    --color-rule: var(--rule);
+    --color-rule-strong: var(--rule-strong);
+    --color-ink: var(--ink);
+    --color-ink-muted: var(--ink-muted);
+    --color-ink-faint: var(--ink-faint);
+
+    /* Brand accent (oxblood). `accent-wash` is the tint, not a fill. */
+    --color-accent: var(--accent);
+    --color-accent-hover: var(--accent-hover);
+    --color-accent-wash: var(--accent-wash);
+    --color-accent-contrast: var(--accent-contrast);
+
+    /* Status. */
+    --color-positive: var(--positive);
+    --color-positive-wash: var(--positive-wash);
+    --color-critical: var(--critical);
+    --color-critical-wash: var(--critical-wash);
+    --color-caution: var(--caution);
+    --color-caution-wash: var(--caution-wash);
+
+    /* Categorical hues for tags, currencies and column formats. Muted,
+       print-ink values chosen to sit alongside the oxblood accent — never
+       reach for a raw Tailwind hue for a category. */
+    --color-cat-1: var(--cat-1);
+    --color-cat-1-wash: var(--cat-1-wash);
+    --color-cat-2: var(--cat-2);
+    --color-cat-2-wash: var(--cat-2-wash);
+    --color-cat-3: var(--cat-3);
+    --color-cat-3-wash: var(--cat-3-wash);
+    --color-cat-4: var(--cat-4);
+    --color-cat-4-wash: var(--cat-4-wash);
+    --color-cat-5: var(--cat-5);
+    --color-cat-5-wash: var(--cat-5-wash);
+    --color-cat-6: var(--cat-6);
+    --color-cat-6-wash: var(--cat-6-wash);
+    --color-cat-7: var(--cat-7);
+    --color-cat-7-wash: var(--cat-7-wash);
+    --color-cat-8: var(--cat-8);
+    --color-cat-8-wash: var(--cat-8-wash);
+
+    /* shadcn semantic names, pointed at the editorial tokens so anything
+       pulled from the registry inherits this theme with no adaptation. */
+    --color-background: var(--paper);
+    --color-foreground: var(--ink);
+    --color-card: var(--surface);
+    --color-card-foreground: var(--ink);
+    --color-popover: var(--surface);
+    --color-popover-foreground: var(--ink);
+    --color-primary: var(--ink);
+    --color-primary-foreground: var(--surface);
+    --color-secondary: var(--surface-sunk);
+    --color-secondary-foreground: var(--ink);
+    --color-muted: var(--surface-sunk);
+    --color-muted-foreground: var(--ink-muted);
+    --color-accent-foreground: var(--accent-contrast);
+    --color-destructive: var(--critical);
+    --color-border: var(--rule);
+    --color-input: var(--rule-strong);
+    --color-ring: var(--accent);
+    --color-chart-1: var(--accent);
+    --color-chart-2: var(--positive);
+    --color-chart-3: var(--caution);
+    --color-chart-4: var(--ink-muted);
+    --color-chart-5: var(--rule-strong);
+    --color-sidebar: var(--surface);
+    --color-sidebar-foreground: var(--ink);
+    --color-sidebar-primary: var(--accent);
+    --color-sidebar-primary-foreground: var(--accent-contrast);
+    --color-sidebar-accent: var(--surface-sunk);
+    --color-sidebar-accent-foreground: var(--ink);
+    --color-sidebar-border: var(--rule);
+    --color-sidebar-ring: var(--accent);
+
+    /* Editorial radii: tight. Pills opt into `rounded-full` explicitly. */
+    --radius-sm: calc(var(--radius) - 2px);
+    --radius-md: var(--radius);
+    --radius-lg: calc(var(--radius) + 2px);
+    --radius-xl: calc(var(--radius) + 6px);
+}
+
+:root {
+    --radius: 0.25rem;
+
+    --paper: #faf8f5;
+    --surface: #ffffff;
+    --surface-sunk: #f4f1ec;
+    --rule: #e3ded5;
+    --rule-strong: #cdc6ba;
+
+    --ink: #17181c;
+    --ink-muted: #5c5f68;
+    --ink-faint: #8b8e96;
+
+    --accent: #8a2433;
+    --accent-hover: #6f1c29;
+    --accent-wash: rgba(138, 36, 51, 0.06);
+    --accent-contrast: #ffffff;
+
+    --positive: #1f6b4a;
+    --positive-wash: rgba(31, 107, 74, 0.08);
+    --critical: #a52a1a;
+    --critical-wash: rgba(165, 42, 26, 0.08);
+    --caution: #8a5a12;
+    --caution-wash: rgba(138, 90, 18, 0.09);
+
+    --cat-1: #8a2433;
+    --cat-1-wash: rgba(138, 36, 51, 0.08);
+    --cat-2: #1f3a63;
+    --cat-2-wash: rgba(31, 58, 99, 0.08);
+    --cat-3: #1f6b4a;
+    --cat-3-wash: rgba(31, 107, 74, 0.08);
+    --cat-4: #8a5a12;
+    --cat-4-wash: rgba(138, 90, 18, 0.09);
+    --cat-5: #5b2f6b;
+    --cat-5-wash: rgba(91, 47, 107, 0.08);
+    --cat-6: #1f5d63;
+    --cat-6-wash: rgba(31, 93, 99, 0.08);
+    --cat-7: #9c4a2a;
+    --cat-7-wash: rgba(156, 74, 42, 0.09);
+    --cat-8: #4f5c22;
+    --cat-8-wash: rgba(79, 92, 34, 0.09);
+}
+
+.dark {
+    color-scheme: dark;
+
+    --paper: #15161a;
+    --surface: #1c1e23;
+    --surface-sunk: #121316;
+    --rule: #2c2f36;
+    --rule-strong: #454a54;
+
+    --ink: #f2f0ec;
+    --ink-muted: #a3a7b0;
+    --ink-faint: #767b85;
+
+    --accent: #d4707c;
+    --accent-hover: #e08c96;
+    --accent-wash: rgba(212, 112, 124, 0.1);
+    --accent-contrast: #1c1e23;
+
+    --positive: #4fae83;
+    --positive-wash: rgba(79, 174, 131, 0.12);
+    --critical: #e0705e;
+    --critical-wash: rgba(224, 112, 94, 0.12);
+    --caution: #d4a03f;
+    --caution-wash: rgba(212, 160, 63, 0.12);
+
+    --cat-1: #d4707c;
+    --cat-1-wash: rgba(212, 112, 124, 0.14);
+    --cat-2: #7fa5d8;
+    --cat-2-wash: rgba(127, 165, 216, 0.14);
+    --cat-3: #4fae83;
+    --cat-3-wash: rgba(79, 174, 131, 0.14);
+    --cat-4: #d4a03f;
+    --cat-4-wash: rgba(212, 160, 63, 0.14);
+    --cat-5: #b083c4;
+    --cat-5-wash: rgba(176, 131, 196, 0.14);
+    --cat-6: #5fb0b8;
+    --cat-6-wash: rgba(95, 176, 184, 0.14);
+    --cat-7: #dd8f68;
+    --cat-7-wash: rgba(221, 143, 104, 0.14);
+    --cat-8: #a5b45e;
+    --cat-8-wash: rgba(165, 180, 94, 0.14);
+}
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-paper text-ink;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* Dark mode is class-based and applied from the user profile, so the
+       browser's own widget chrome needs telling separately. */
+    .dark input,
+    .dark textarea,
+    .dark select {
+        color-scheme: dark;
+    }
+}

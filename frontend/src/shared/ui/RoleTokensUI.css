@@ -1,0 +1,233 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Accelerate Legal — semantic color roles.
+
+   Theme-sensitive colors that describe what a color *does* rather than how
+   deep a surface sits. Shared verbatim by the web app and the Word add-in, so
+   everything here is derived from the editorial tokens in globals.css with a
+   literal fallback for the add-in's standalone build.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --document-tab-active-background: var(--surface, #ffffff);
+    --document-tab-inactive-background: var(--surface-sunk, #f4f1ec);
+    --document-tab-strip-background: var(--paper, #faf8f5);
+    --document-tab-outline: var(--rule, #e3ded5);
+    --document-tab-active-text: var(--ink, #17181c);
+    --document-tab-inactive-text: var(--ink-muted, #5c5f68);
+
+    --editor-text: var(--ink, #17181c);
+    --editor-heading: var(--ink, #17181c);
+    --editor-strong-text: var(--ink, #17181c);
+    --editor-muted-text: var(--ink-muted, #5c5f68);
+    --editor-border: var(--rule, #e3ded5);
+    --editor-grid-line: var(--rule, #e3ded5);
+    --editor-table-header: var(--surface-sunk, #f4f1ec);
+
+    /* Quote and citation highlights. Accent-derived so a citation reads as
+       "the thing the assistant is pointing at", in brand. */
+    --pdf-highlight-background: rgba(138, 36, 51, 0.16);
+    --docx-highlight-background: rgba(138, 36, 51, 0.24);
+    --case-highlight-background: rgba(138, 36, 51, 0.18);
+    --citation-selected-background: rgba(138, 36, 51, 0.09);
+    --citation-selected-text: #5c1621;
+    --citation-selected-muted-text: #7a2130;
+
+    /* Interactive state fills, shared by every material tier. */
+    --surface-hover-background: var(--surface-sunk, #f4f1ec);
+    --surface-selected-background: var(--accent-wash, rgba(138, 36, 51, 0.06));
+    --overlay-row-hover-background: var(--surface-sunk, #f4f1ec);
+    --overlay-row-selected-background: var(--accent-wash, rgba(138, 36, 51, 0.06));
+
+    --content-fade-color: var(--surface, #ffffff);
+    --scrim-fade-from: rgba(250, 248, 245, 0.85);
+    --scrim-fade-mid: rgba(250, 248, 245, 0.62);
+    --scrim-fade-late: rgba(250, 248, 245, 0.22);
+    --scrim-fade-to: rgba(250, 248, 245, 0);
+    --shimmer-edge: var(--surface-sunk, #f4f1ec);
+    --shimmer-middle: var(--rule, #e3ded5);
+
+    --edit-flash-strong: rgba(138, 36, 51, 0.32);
+    --edit-flash-fade: rgba(138, 36, 51, 0);
+
+    --spreadsheet-header-tint: var(--surface-sunk, #f4f1ec);
+    --spreadsheet-header-corner: var(--surface-sunk, #f4f1ec);
+    --spreadsheet-header-hover: var(--rule, #e3ded5);
+    --spreadsheet-header-selected: var(--rule-strong, #cdc6ba);
+    --spreadsheet-highlight-background: rgba(138, 36, 51, 0.14);
+    --spreadsheet-highlight-outline: var(--accent, #8a2433);
+}
+
+.dark {
+    --document-tab-active-background: var(--surface, #1c1e23);
+    --document-tab-inactive-background: var(--surface-sunk, #121316);
+    --document-tab-strip-background: var(--paper, #15161a);
+    --document-tab-outline: var(--rule, #2c2f36);
+    --document-tab-active-text: var(--ink, #f2f0ec);
+    --document-tab-inactive-text: var(--ink-muted, #a3a7b0);
+
+    --editor-text: var(--ink, #f2f0ec);
+    --editor-heading: var(--ink, #f2f0ec);
+    --editor-strong-text: var(--ink, #f2f0ec);
+    --editor-muted-text: var(--ink-muted, #a3a7b0);
+    --editor-border: var(--rule, #2c2f36);
+    --editor-grid-line: var(--rule, #2c2f36);
+    --editor-table-header: var(--surface-sunk, #121316);
+
+    --pdf-highlight-background: rgba(212, 112, 124, 0.28);
+    --docx-highlight-background: rgba(212, 112, 124, 0.34);
+    --case-highlight-background: rgba(212, 112, 124, 0.3);
+    --citation-selected-background: rgba(212, 112, 124, 0.18);
+    --citation-selected-text: #f6dfe2;
+    --citation-selected-muted-text: #e0aeb5;
+
+    --surface-hover-background: var(--surface-sunk, #121316);
+    --surface-selected-background: var(--accent-wash, rgba(212, 112, 124, 0.1));
+    --overlay-row-hover-background: var(--surface-sunk, #121316);
+    --overlay-row-selected-background: var(--accent-wash, rgba(212, 112, 124, 0.1));
+
+    --content-fade-color: var(--surface, #1c1e23);
+    --scrim-fade-from: rgba(21, 22, 26, 0.85);
+    --scrim-fade-mid: rgba(21, 22, 26, 0.62);
+    --scrim-fade-late: rgba(21, 22, 26, 0.22);
+    --scrim-fade-to: rgba(21, 22, 26, 0);
+    --shimmer-edge: var(--surface-sunk, #121316);
+    --shimmer-middle: var(--rule, #2c2f36);
+
+    --edit-flash-strong: rgba(212, 112, 124, 0.34);
+    --edit-flash-fade: rgba(212, 112, 124, 0);
+
+    --spreadsheet-header-tint: var(--surface-sunk, #121316);
+    --spreadsheet-header-corner: var(--surface-sunk, #121316);
+    --spreadsheet-header-hover: var(--rule, #2c2f36);
+    --spreadsheet-header-selected: var(--rule-strong, #454a54);
+    --spreadsheet-highlight-background: rgba(212, 112, 124, 0.2);
+    --spreadsheet-highlight-outline: var(--accent, #d4707c);
+}
+
+/* ─── Document tabs ──────────────────────────────────────────────── */
+.document-tab-divider,
+.document-tab-strip {
+    box-shadow: inset 0 -1px 0 var(--document-tab-outline);
+}
+
+.document-tab-strip {
+    background-color: var(--document-tab-strip-background);
+}
+
+.document-tab {
+    color: var(--document-tab-inactive-text);
+    background-color: var(--document-tab-inactive-background);
+    box-shadow: inset 0 0 0 1px var(--document-tab-outline);
+}
+
+.document-tab[data-active="true"] {
+    color: var(--document-tab-active-text);
+    background-color: var(--document-tab-active-background);
+    box-shadow:
+        inset 0 0 0 1px var(--document-tab-outline),
+        inset 0 -1px 0 var(--document-tab-active-background);
+}
+
+/* ─── Interactive state, shared by every material tier ───────────── */
+.theme-dropdown-item:hover,
+.theme-dropdown-item:focus,
+.theme-dropdown-item[data-highlighted],
+.surface-hover:not(:disabled):hover {
+    background-color: var(--surface-hover-background);
+}
+
+.theme-dropdown-item[data-selected="true"],
+.theme-dropdown-item[data-state="checked"],
+.surface-selected {
+    background-color: var(--surface-selected-background);
+}
+
+.theme-dropdown-selected,
+.theme-dropdown-item.theme-dropdown-selected {
+    background-color: var(--surface-selected-background);
+}
+
+.surface-pressed:not(:disabled):active {
+    background-color: var(--surface-selected-background);
+}
+
+.group:hover .surface-group-hover {
+    background-color: var(--surface-hover-background);
+}
+
+.overlay-row-hover:not(:disabled):hover {
+    background-color: var(--overlay-row-hover-background);
+}
+
+.overlay-row-selected {
+    background-color: var(--overlay-row-selected-background);
+}
+
+/* ─── Citations ──────────────────────────────────────────────────── */
+.citation-quote-selected {
+    background-color: var(--citation-selected-background);
+}
+
+.citation-quote-selected-text {
+    color: var(--citation-selected-text);
+}
+
+.citation-quote-selected-muted {
+    color: var(--citation-selected-muted-text);
+}
+
+/* ─── Loading and fades ──────────────────────────────────────────── */
+.theme-shimmer {
+    background-image: linear-gradient(
+        to right,
+        var(--shimmer-edge),
+        var(--shimmer-middle),
+        var(--shimmer-edge)
+    );
+}
+
+.header-scrim-fade {
+    background: linear-gradient(
+        to bottom,
+        var(--scrim-fade-from) 0%,
+        var(--scrim-fade-mid) 48%,
+        var(--scrim-fade-late) 76%,
+        var(--scrim-fade-to) 100%
+    );
+}
+
+.content-bottom-fade {
+    background: linear-gradient(to bottom, transparent, var(--content-fade-color));
+}
+
+.assistant-chat-message-fade {
+    mask-image: linear-gradient(
+        to bottom,
+        black 0,
+        black calc(100% - 7rem),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0,
+        black calc(100% - 7rem),
+        transparent 100%
+    );
+}
+
+.tr-chat-message-fades {
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        black 2.5rem,
+        black calc(100% - 8rem),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        black 2.5rem,
+        black calc(100% - 8rem),
+        transparent 100%
+    );
+}

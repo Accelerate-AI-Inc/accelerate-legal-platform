@@ -1,0 +1,277 @@
+import React, { useState } from "react";
+import type { Message } from "../../types";
+import type { ReasoningLevel } from "../../lib/wordChatTypes";
+import {
+  Check,
+  ChevronLeft,
+  Ellipsis,
+  Menu,
+  Pencil,
+  Plus,
+  Trash2,
+  X,
+} from "lucide-react";
+import {
+  LiquidActionRow,
+  LiquidIconButton,
+  LiquidTextButton,
+} from "../primitives/LiquidActionRow";
+import {
+  HeaderButtonUI,
+  HeaderButtonsUI,
+} from "@ax/header-buttons-ui";
+import {
+  History as ChatHistoryIcon,
+  LogOut as SignOutIcon,
+  MessageSquare as AssistantIcon,
+  Settings as SettingsIcon,
+  Workflow as WorkflowsIcon,
+  Zap as QuickActionsIcon,
+} from "lucide-react";
+import { ChatHistoryDropdown } from "../history/ChatHistoryDropdown";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownSeparator,
+  DropdownTrigger,
+} from "@ax/dropdown-ui";
+import type { WordChatStorageMode } from "../../lib/wordChatSettings";
+
+export type AddinSection =
+  | "chat"
+  | "actions"
+  | "workflows"
+  | "history"
+  | "settings";
+
+interface FloatingHeaderProps {
+  section: AddinSection;
+  onSectionChange: (section: AddinSection) => void;
+  onNewChat: () => void;
+  hasActiveChat: boolean;
+  onSelectHistoryChat: (
+    chatId: string,
+    messages: Message[],
+    model: string | null,
+    reasoningLevel: ReasoningLevel | null,
+  ) => void;
+  workflowDetailOpen?: boolean;
+  onWorkflowBack?: () => void;
+  onOpenWorkflowDetails?: () => void;
+  onDeleteWorkflow?: () => void;
+  canDeleteWorkflow?: boolean;
+  onUseWorkflow?: () => void;
+  onNewWorkflow?: () => void;
+  onNewQuickAction?: () => void;
+  onSignOut: () => void;
+  wordDocumentId: string;
+  wordChatStorage: WordChatStorageMode;
+  wordChatOwnerId: string;
+}
+
+const SECTIONS = [
+  { value: "chat" as const, label: "Assistant", Icon: AssistantIcon },
+  { value: "history" as const, label: "Chat History", Icon: ChatHistoryIcon },
+  { value: "actions" as const, label: "Quick Actions", Icon: QuickActionsIcon },
+  { value: "workflows" as const, label: "Workflows", Icon: WorkflowsIcon },
+  { value: "settings" as const, label: "Settings", Icon: SettingsIcon },
+];
+
+export function FloatingHeader({
+  section,
+  onSectionChange,
+  onNewChat,
+  hasActiveChat,
+  onSelectHistoryChat,
+  workflowDetailOpen = false,
+  onWorkflowBack,
+  onOpenWorkflowDetails,
+  onDeleteWorkflow,
+  canDeleteWorkflow = false,
+  onUseWorkflow,
+  onNewWorkflow,
+  onNewQuickAction,
+  onSignOut,
+  wordDocumentId,
+  wordChatStorage,
+  wordChatOwnerId,
+}: FloatingHeaderProps): React.ReactElement {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [workflowActionsOpen, setWorkflowActionsOpen] = useState(false);
+
+  return (
+    <header
+      data-testid="floating-header"
+      className="pointer-events-none absolute inset-x-0 top-0 z-40 isolate flex items-center justify-between gap-3 p-3"
+    >
+      {/* Content fades out under the header. This used to ramp the blur down
+          in four stacked backdrop-blur layers (1/2/4/8px), but every
+          backdrop-filter re-samples whatever is moving behind it on each
+          frame — in WKWebView that made the streaming transcript pay for four
+          full-width re-samples per scrolled frame. One blurred layer whose
+          mask alpha ramps down through several stops is the standard
+          single-layer approximation of a progressive blur: the cross-fade
+          from blurred to sharp reads as the blur easing off, and the mask
+          reaches zero well before the pane's bottom edge so no seam is left
+          to catch the eye. -webkit-mask-image is spelled out because
+          WKWebView still wants the prefixed form. */}
+      <div
+        aria-hidden="true"
+        data-testid="header-scrim"
+        className="pointer-events-none absolute -bottom-2 left-0 right-2 top-0 z-0"
+      >
+        <div className="absolute inset-0 backdrop-blur-[8px] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_16%,rgba(0,0,0,0.55)_46%,rgba(0,0,0,0.2)_72%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_0%,black_16%,rgba(0,0,0,0.55)_46%,rgba(0,0,0,0.2)_72%,transparent_100%)]" />
+        <div className="header-scrim-fade absolute inset-0" />
+      </div>
+
+      <div className="relative z-10 flex items-center gap-2">
+        <Dropdown open={menuOpen} onOpenChange={setMenuOpen}>
+          <LiquidActionRow className="pointer-events-auto">
+            <DropdownTrigger asChild>
+              <LiquidIconButton
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
+                title={menuOpen ? "Close menu" : "Menu"}
+              >
+                {menuOpen ? (
+                  <X className="h-4 w-4" />
+                ) : (
+                  <Menu className="h-4 w-4" />
+                )}
+              </LiquidIconButton>
+            </DropdownTrigger>
+          </LiquidActionRow>
+          <DropdownContent align="start" sideOffset={8} className="min-w-44">
+            {SECTIONS.map((item) => {
+              return (
+                <DropdownItem
+                  key={item.value}
+                  onSelect={() => onSectionChange(item.value)}
+                  selected={section === item.value}
+                >
+                  <item.Icon
+                    aria-hidden="true"
+                    className="h-4 w-4 shrink-0 text-ink-faint"
+                  />
+                  <span className="min-w-0 flex-1">{item.label}</span>
+                </DropdownItem>
+              );
+            })}
+            <DropdownSeparator />
+            <DropdownItem onSelect={onSignOut}>
+              <SignOutIcon
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 text-ink-faint"
+              />
+              <span className="min-w-0 flex-1">Sign out</span>
+            </DropdownItem>
+          </DropdownContent>
+        </Dropdown>
+        {workflowDetailOpen && (
+          <LiquidActionRow
+            data-testid="workflow-back-bubble"
+            className="pointer-events-auto"
+          >
+            <LiquidTextButton
+              onClick={onWorkflowBack}
+              aria-label="Back to workflows"
+              title="Back to workflows"
+            >
+              <ChevronLeft className="h-3.5 w-3.5" />
+              Workflows
+            </LiquidTextButton>
+          </LiquidActionRow>
+        )}
+      </div>
+
+      {section === "chat" ? (
+        <HeaderButtonsUI className="pointer-events-auto relative z-10">
+          {hasActiveChat && (
+            <HeaderButtonUI
+              iconOnly
+              onClick={onNewChat}
+              aria-label="New chat"
+              title="New chat"
+            >
+              <Plus className="h-4 w-4" />
+            </HeaderButtonUI>
+          )}
+          <ChatHistoryDropdown
+            onSelect={onSelectHistoryChat}
+            documentId={wordDocumentId}
+            ownerId={wordChatOwnerId}
+            storageMode={wordChatStorage}
+          />
+        </HeaderButtonsUI>
+      ) : workflowDetailOpen ? (
+        <HeaderButtonsUI className="pointer-events-auto relative z-10">
+          <Dropdown
+            open={workflowActionsOpen}
+            onOpenChange={setWorkflowActionsOpen}
+          >
+            <DropdownTrigger asChild>
+              <HeaderButtonUI
+                iconOnly
+                aria-label="Workflow actions"
+                title="Workflow actions"
+              >
+                <Ellipsis className="h-4 w-4" />
+              </HeaderButtonUI>
+            </DropdownTrigger>
+            <DropdownContent align="end" sideOffset={8} className="min-w-40">
+              <DropdownItem onSelect={() => onOpenWorkflowDetails?.()}>
+                <Pencil className="h-3.5 w-3.5" />
+                <span>Edit details</span>
+              </DropdownItem>
+              <DropdownItem
+                disabled={!canDeleteWorkflow}
+                onSelect={() => onDeleteWorkflow?.()}
+                className="text-critical"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                <span>Delete</span>
+              </DropdownItem>
+            </DropdownContent>
+          </Dropdown>
+          <LiquidTextButton onClick={onUseWorkflow}>
+            <Check className="h-3.5 w-3.5" />
+            Use
+          </LiquidTextButton>
+        </HeaderButtonsUI>
+      ) : section === "history" ? (
+        <HeaderButtonsUI className="pointer-events-auto relative z-10">
+          <HeaderButtonUI
+            iconOnly
+            onClick={onNewChat}
+            aria-label="New chat"
+            title="New chat"
+          >
+            <Plus className="h-4 w-4" />
+          </HeaderButtonUI>
+        </HeaderButtonsUI>
+      ) : section === "workflows" ? (
+        <HeaderButtonsUI className="pointer-events-auto relative z-10">
+          <HeaderButtonUI
+            iconOnly
+            onClick={onNewWorkflow}
+            aria-label="New workflow"
+            title="New workflow"
+          >
+            <Plus className="h-4 w-4" />
+          </HeaderButtonUI>
+        </HeaderButtonsUI>
+      ) : section === "actions" ? (
+        <HeaderButtonsUI className="pointer-events-auto relative z-10">
+          <HeaderButtonUI
+            iconOnly
+            onClick={onNewQuickAction}
+            aria-label="New quick action"
+            title="New quick action"
+          >
+            <Plus className="h-4 w-4" />
+          </HeaderButtonUI>
+        </HeaderButtonsUI>
+      ) : null}
+    </header>
+  );
+}

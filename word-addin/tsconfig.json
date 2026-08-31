@@ -1,0 +1,94 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "react": [
+        "node_modules/@types/react/index.d.ts"
+      ],
+      "react/jsx-runtime": [
+        "node_modules/@types/react/jsx-runtime.d.ts"
+      ],
+      "react-dom": [
+        "node_modules/@types/react-dom/index.d.ts"
+      ],
+      "lucide-react": [
+        "node_modules/lucide-react"
+      ],
+      "clsx": [
+        "node_modules/clsx"
+      ],
+      "tailwind-merge": [
+        "node_modules/tailwind-merge"
+      ],
+      "@radix-ui/react-dropdown-menu": [
+        "node_modules/@radix-ui/react-dropdown-menu"
+      ],
+      "@ax/edit-card-ui": [
+        "../frontend/src/shared/ui/EditCardUI.tsx"
+      ],
+      "@ax/edit-cards-section-ui": [
+        "../frontend/src/shared/ui/EditCardsSectionUI.tsx"
+      ],
+      "@ax/pre-response-wrapper-ui": [
+        "../frontend/src/shared/ui/PreResponseWrapperUI.tsx"
+      ],
+      "@ax/document-event-blocks-ui": [
+        "../frontend/src/shared/ui/DocumentEventBlocksUI.tsx"
+      ],
+      "@ax/card-ui": [
+        "../frontend/src/shared/ui/CardUI.tsx"
+      ],
+      "@ax/modal-ui": [
+        "../frontend/src/shared/ui/ModalUI.tsx"
+      ],
+      "@ax/header-buttons-ui": [
+        "../frontend/src/shared/ui/HeaderButtonsUI.tsx"
+      ],
+      "@ax/pill-button-ui": [
+        "../frontend/src/shared/ui/PillButtonUI.tsx"
+      ],
+      "@ax/dropdown-ui": [
+        "../frontend/src/shared/ui/DropdownUI.tsx"
+      ],
+      "@ax/citation-pill-ui": [
+        "../frontend/src/shared/ui/CitationPillUI.tsx"
+      ],
+      "@ax/model-toggle-ui": [
+        "../frontend/src/shared/ui/ModelToggleUI.tsx"
+      ],
+      "@ax/brand-mark-ui": [
+        "../frontend/src/shared/ui/BrandMarkUI.tsx"
+      ],
+      "@ax/google-icon-ui": [
+        "../frontend/src/shared/ui/GoogleIconUI.tsx"
+      ],
+      "@ax/auth-styles-ui": [
+        "../frontend/src/shared/ui/AuthStylesUI.ts"
+      ],
+      "@ax/auth-divider-ui": [
+        "../frontend/src/shared/ui/AuthDividerUI.tsx"
+      ],
+      "@ax/workflow-slash-command-ui": [
+        "../frontend/src/shared/ui/WorkflowSlashCommandUI.tsx"
+      ]
+    },
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src"]
+}

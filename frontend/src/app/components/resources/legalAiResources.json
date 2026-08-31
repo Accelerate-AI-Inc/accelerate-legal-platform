@@ -1,0 +1,1394 @@
+{
+  "source": "https://github.com/CSHaitao/Awesome-LegalAI-Resources",
+  "license": "MIT",
+  "generatedBy": "scripts/import-legal-ai-resources.mjs",
+  "resources": [
+    {
+      "slug": "austlii-edu-au",
+      "name": "austlii.edu.au",
+      "kind": "website",
+      "category": "Websites",
+      "description": "Offers access to legal materials from Australia and neighboring countries, including cases, legislation, treaties, and law reform reports.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.austlii.edu.au",
+      "languages": [],
+      "jurisdictions": [
+        "Australia"
+      ],
+      "tags": [
+        "website",
+        "australia"
+      ],
+      "contentHash": "13c2c8999c9be2a45a522dbf043d18a391d631e93fa04a6d0498e0ddfe3d826d"
+    },
+    {
+      "slug": "bailii-org",
+      "name": "bailii.org",
+      "kind": "website",
+      "category": "Websites",
+      "description": "provides access to legal materials from the United Kingdom and Ireland, including cases, legislation, and legal journals.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.bailii.org",
+      "languages": [],
+      "jurisdictions": [
+        "UK",
+        "Ireland"
+      ],
+      "tags": [
+        "website",
+        "uk",
+        "ireland"
+      ],
+      "contentHash": "bae52bc29ec68e93005c8878da439bdb76d4fb3bbac1494f22e4a391ceb9b89d"
+    },
+    {
+      "slug": "billsum",
+      "name": "BillSum",
+      "kind": "benchmark",
+      "category": "Summarization",
+      "description": "We introduce the BillSum dataset, which contains a primary corpus of 22,218 US Congressional bills and reference summaries split into a train and a test set.",
+      "paperUrl": "https://aclanthology.org/D19-5406/",
+      "datasetUrl": "https://huggingface.co/datasets/billsum",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "d4a991630926a965bfebb61622de28f3d070cce482abf7318f3b50ed11f1f276"
+    },
+    {
+      "slug": "cail2018",
+      "name": "CAIL2018",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "CAIL2018 contains more than 2.6 million criminal cases published by the Supreme People’s Court of China. It consists of applicable law articles, charges, and prison terms, which are expected to be inferred according to the fact descriptions of cases.",
+      "paperUrl": "https://arxiv.org/abs/1807.02478",
+      "datasetUrl": "https://github.com/thunlp/CAIL2018",
+      "siteUrl": null,
+      "languages": [
+        "Chinese"
+      ],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "benchmark",
+        "chinese",
+        "china"
+      ],
+      "contentHash": "5bd5ce28e7a4851c63dc92c6449da9c2face927e2a39dc2f177d5767cc045af3"
+    },
+    {
+      "slug": "canlii-org",
+      "name": "canlii.org",
+      "kind": "website",
+      "category": "Websites",
+      "description": "Provides access to Canadian legal documents, including cases, statutes, regulations, and court rules.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.canlii.org",
+      "languages": [],
+      "jurisdictions": [
+        "Canada"
+      ],
+      "tags": [
+        "website",
+        "canada"
+      ],
+      "contentHash": "6bce08587d65aaa8279eb09e13658b7dbf0b4f5c0fe25bc24169e2c99385a6f7"
+    },
+    {
+      "slug": "case-law",
+      "name": "case.law",
+      "kind": "website",
+      "category": "Websites",
+      "description": "all official, book-published United States case law.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://case.law",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "b00a9886cd4e0e020eac0b762abb5cb7b1821c4058c04bd31dae0f57534e9c76"
+    },
+    {
+      "slug": "casehold",
+      "name": "CaseHOLD",
+      "kind": "benchmark",
+      "category": "Question Answering",
+      "description": "This CaseHOLD dataset provides 53,000+ multiple choice questions with prompts from a judicial decision and multiple potential holdings, one of which is correct, that could be cited.",
+      "paperUrl": "https://dl.acm.org/doi/10.1145/3462757.3466088",
+      "datasetUrl": "https://github.com/reglab/casehold",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "e51a0c1cd1aa06fde89c3e1f86a6cddc345cd87f08a4f42d08a77ee3f42e97c9"
+    },
+    {
+      "slug": "cdjur-br",
+      "name": "CDJUR-BR",
+      "kind": "benchmark",
+      "category": "Entity extraction",
+      "description": "We describe the development of the Golden Collection of the Brazilian Judiciary (CDJUR-BR) contemplating a set of fine-grained named entities that have been annotated by experts in legal documents. This contains 44,526 annotations for 21 entities.",
+      "paperUrl": "https://arxiv.org/abs/2305.18315",
+      "datasetUrl": "https://huggingface.co/datasets/dennlinger/eur-lex-sum",
+      "siteUrl": null,
+      "languages": [
+        "Portuguese"
+      ],
+      "jurisdictions": [
+        "Brazilian"
+      ],
+      "tags": [
+        "benchmark",
+        "portuguese",
+        "brazilian"
+      ],
+      "contentHash": "100bfa2e8681c1e42a27afac16f9c2862bb3b139557f84731e556f4660289a05"
+    },
+    {
+      "slug": "coliee-legal-case-entailment",
+      "name": "COLIEE",
+      "kind": "benchmark",
+      "category": "Legal Case Entailment",
+      "description": "The Competition on Legal Information Extraction/Entailment (COLIEE) is an annual international competition whose aim is to achieve state-of-the-art methods for legal text processing. Task 2 is the legal case entailment task. Task 4 is the legal textual entailment data corpus.",
+      "paperUrl": "https://sites.ualberta.ca/~rabelo/COLIEE2023/COLIEE2022_summary.pdf",
+      "datasetUrl": "https://sites.ualberta.ca/~rabelo/COLIEE2023/",
+      "siteUrl": null,
+      "languages": [
+        "English",
+        "Japanese"
+      ],
+      "jurisdictions": [
+        "Canada",
+        "Japan"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "japanese",
+        "canada",
+        "japan"
+      ],
+      "contentHash": "cc9dd9084df8cfb2dfbb6c35f6e32fa87ffcd4adedaaf36d6da679c3f8e7a67a"
+    },
+    {
+      "slug": "coliee-legal-case-retrieval",
+      "name": "COLIEE",
+      "kind": "benchmark",
+      "category": "Legal Case Retrieval",
+      "description": "The Competition on Legal Information Extraction/Entailment (COLIEE) is an annual international competition whose aim is to achieve state-of-the-art methods for legal text processing. Task 1 is the legal case retrieval task. Task 3 is the statute law retrieval task.",
+      "paperUrl": "https://sites.ualberta.ca/~rabelo/COLIEE2023/COLIEE2022_summary.pdf",
+      "datasetUrl": "https://sites.ualberta.ca/~rabelo/COLIEE2023/",
+      "siteUrl": null,
+      "languages": [
+        "English",
+        "Japanese"
+      ],
+      "jurisdictions": [
+        "Canada",
+        "Japan"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "japanese",
+        "canada",
+        "japan"
+      ],
+      "contentHash": "28a6b692bc96fa50b6a72aa6c48731fd270690dc043dc012d6ff8606df9cbdb2"
+    },
+    {
+      "slug": "contractnli",
+      "name": "ContractNLI",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "In this work, we propose documentlevel natural language inference (NLI) for contracts, a novel, real-world application of NLI that addresses such problems. We annotated and release the largest corpus to date consisting of 607 annotated contracts.",
+      "paperUrl": "https://arxiv.org/abs/2110.01799",
+      "datasetUrl": "https://stanfordnlp.github.io/contract-nli/",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "8b6962591ef23faaaea22d6b50a5cf5129029f5393c9d482e717a14ecc50c4b4"
+    },
+    {
+      "slug": "courtlistener",
+      "name": "CourtListener",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "The original Court Listener dataset is a collection of every court opinion published by every court in the United States. It covers 406 jurisdictions (out of 423), with opinions from the year 1754 up to now. It is constantly updated with newly filed opinions, and digitized archives.",
+      "paperUrl": null,
+      "datasetUrl": "https://www.courtlistener.com/help/api/bulk-data/",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "corpus",
+        "english",
+        "america"
+      ],
+      "contentHash": "69e0a0a8cfb83d67a36a8530b2bd235217984615b31e41b3bc023572d4ccd9a3"
+    },
+    {
+      "slug": "courtlistener-com",
+      "name": "courtlistener.com",
+      "kind": "website",
+      "category": "Websites",
+      "description": "a free legal research platform that provides access to U.S. federal and state court cases, along with other legal documents and opinions.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.courtlistener.com",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "b3d817025b25deedf85881be5aaaa0dd9b5fde2d9e25fc6130bbdaab62e9608f"
+    },
+    {
+      "slug": "curia-europa-eu",
+      "name": "curia.europa.eu",
+      "kind": "website",
+      "category": "Websites",
+      "description": "the official website of the European Court of Justice, offering access to European Union legal documents and cases.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://curia.europa.eu/jcms/jcms/j_6",
+      "languages": [],
+      "jurisdictions": [
+        "EU"
+      ],
+      "tags": [
+        "website",
+        "eu"
+      ],
+      "contentHash": "bd5d3a6a0daaf49f947b303bfbfdf28d05a650455e7a44ade011fe33f1188ae2"
+    },
+    {
+      "slug": "demosthen",
+      "name": "Demosthen",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "A novel corpus for argument mining in legal documents, composed of 40 decisions of the Court of Justice of the European Union on matters of fiscal state ai.",
+      "paperUrl": "https://aclanthology.org/2022.argmining-1.14.pdf",
+      "datasetUrl": "https://github.com/adele-project/demosthenes",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "European"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "european"
+      ],
+      "contentHash": "fe6e58e3d7973039329fd445593e6f1ff9649a2e81a19c58da7d6e0ec0e7352b"
+    },
+    {
+      "slug": "document-similarity",
+      "name": "document-similarity",
+      "kind": "benchmark",
+      "category": "Legal Case Retrieval",
+      "description": "The task here is to calculate a similarity score (in the range 0-1) between two case documents. The dataset collected 53, 210 publicly available case documents from the Supreme Court of India and and 12, 814 Acts from the Indian judiciary.",
+      "paperUrl": "https://arxiv.org/abs/2209.12474",
+      "datasetUrl": "https://github.com/Law-AI/document-similarity",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "India"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "india"
+      ],
+      "contentHash": "a0877f7e34d436e2b87320ef291c8e07f68855613b1c4abede0d29bd7f74e8d6"
+    },
+    {
+      "slug": "echr",
+      "name": "ECHR",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "This paper contributes a new publicly available English legal judgment prediction dataset of cases from the European Court of Human Rights (~11.5k cases).",
+      "paperUrl": "https://aclanthology.org/P19-1424/",
+      "datasetUrl": "https://archive.org/details/ECHR-ACL2019",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "European"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "european"
+      ],
+      "contentHash": "41505f6481b3f9b0f15b9671a69ed81abd23224173ab4a3c1eb647c943927ebb"
+    },
+    {
+      "slug": "eur-lex-sum",
+      "name": "EUR-Lex-Sum",
+      "kind": "benchmark",
+      "category": "Summarization",
+      "description": "We obtain up to 1,500 document/summary pairs per language, including a subset of 375 crosslingually aligned legal acts with texts available in all 24 languages.",
+      "paperUrl": "https://arxiv.org/abs/2210.13448",
+      "datasetUrl": "https://huggingface.co/datasets/dennlinger/eur-lex-sum",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "European"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "european"
+      ],
+      "contentHash": "533cfe09c54449653184724e620066b2e40a31878c048719881b6c34c6fae14c"
+    },
+    {
+      "slug": "eurlex57k",
+      "name": "EURLEX57K",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "We release a new dataset of 57k legislative documents from EUR-LEX, the European Union’s public document database, annotated with concepts from EUROVOC, a multidisciplinary thesaurus.",
+      "paperUrl": "https://aclanthology.org/W19-2209/",
+      "datasetUrl": "http://nlp.cs.aueb.gr/software_and_datasets/EURLEX57K/",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "European"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "european"
+      ],
+      "contentHash": "745f37cf3cef5a66e28c483fb9f329623f7b9818d92dcf56778f3db3e1f2b964"
+    },
+    {
+      "slug": "eurlexresources",
+      "name": "EurlexResources",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "This dataset contains large text resources (~179GB in total) from EURLEX that can be used for pretraining language models.",
+      "paperUrl": null,
+      "datasetUrl": "https://huggingface.co/datasets/joelito/eurlex_resources",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "corpus",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "ae959fb9c74b3fe81391db900be1a3c0f26737349abf7e874d00ac7c66683d57"
+    },
+    {
+      "slug": "extracting-contract-elements",
+      "name": "Extracting Contract Elements",
+      "kind": "benchmark",
+      "category": "Entity extraction",
+      "description": "The paper describes and is accompanied by a new benchmark dataset of approximately 3,500 English contracts with gold contract element annotations.",
+      "paperUrl": "http://nlp.cs.aueb.gr/pubs/icail2017.pdf",
+      "datasetUrl": null,
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "England"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "england"
+      ],
+      "contentHash": "7b2ca24072935ee78befd54c8e769167547700a046323a27f5611ed4c319981f"
+    },
+    {
+      "slug": "fairlex",
+      "name": "FairLex",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "Our benchmarks cover four jurisdictions (European Council, USA, Switzerland, and China), five languages (English, German, French, Italian and Chinese) and fairness across five attributes (gender, age, region, language, and legal area).",
+      "paperUrl": "https://arxiv.org/abs/2203.07228",
+      "datasetUrl": "https://huggingface.co/datasets/coastalcph/fairlex",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "92513591d4efae6808c5d6ef026e6556c2b88a52cbba23902f52929ad9c51080"
+    },
+    {
+      "slug": "findlaw-com",
+      "name": "findlaw.com",
+      "kind": "website",
+      "category": "Websites",
+      "description": "offers legal resources and information, including cases, statutes, regulations, and legal news. Covers U.S. federal and state laws.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.findlaw.com",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "865a16e0f317e83e32501c8dbefc62b0e64b2b62a09bf643ad6ba3f2cc5085f9"
+    },
+    {
+      "slug": "flk-npc-gov-cn",
+      "name": "flk.npc.gov.cn",
+      "kind": "website",
+      "category": "Websites",
+      "description": "all Chinese laws and regulations.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://flk.npc.gov.cn",
+      "languages": [],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "website",
+        "china"
+      ],
+      "contentHash": "ac0c2aad4560107b9da5736d5f4fee6ea2e0a96c5ef7470a3724eb97ef13fc29"
+    },
+    {
+      "slug": "geleco",
+      "name": "GeLeCo",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "GeLeCo is a large German Legal Corpus for research, teaching and translation purposes. It includes the complete collection of federal laws, administrative regulations and court decisions published on three online databases by the German Federal Ministry of Justice and Consumer Protection and the Federal Office of Justice.",
+      "paperUrl": null,
+      "datasetUrl": "https://github.com/antcont/GeLeCo",
+      "siteUrl": null,
+      "languages": [
+        "German"
+      ],
+      "jurisdictions": [
+        "German"
+      ],
+      "tags": [
+        "corpus",
+        "german",
+        "german"
+      ],
+      "contentHash": "fe67898b69d3e99c9e2e87bf386e5966e0c4516af189b148ed93e5e6981c366c"
+    },
+    {
+      "slug": "gentle",
+      "name": "GENTLE",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "We present GENTLE, a new mixed-genre English challenge corpus totaling 17K tokens and consisting of 8 unusual text types for out-of domain evaluation: dictionary entries, esports commentaries, legal documents, medical notes, poetry, mathematical proofs, syllabuses, and threat letters.",
+      "paperUrl": "https://arxiv.org/abs/2306.01966",
+      "datasetUrl": "https://github.com/gucorpling/gentle",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [],
+      "tags": [
+        "benchmark",
+        "english"
+      ],
+      "contentHash": "f7a50ed8461eb0fecc43a69bee6306b480a08f508ebb933a349b0e4d2995c9dc"
+    },
+    {
+      "slug": "german-legal-decision-corpora",
+      "name": "German Legal Decision Corpora",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "To meet this need for publicly available German legal text corpora this paper presents two German legal text corpora. The first corpus contains 32,748 decisions from 131 German courts, enriched with metadata. The second one is a subset of the first corpus and consists of 200 randomly chosen judgements.",
+      "paperUrl": "https://www.scitepress.org/PublishedPapers/2021/101873/101873.pdf",
+      "datasetUrl": "https://zenodo.org/record/3936490#.X1ed7ovgomK",
+      "siteUrl": null,
+      "languages": [
+        "German"
+      ],
+      "jurisdictions": [
+        "German"
+      ],
+      "tags": [
+        "benchmark",
+        "german",
+        "german"
+      ],
+      "contentHash": "e6369c8e5540292addfb6e23cf02fdab271cbaf46539f8116630bd5953370972"
+    },
+    {
+      "slug": "german-rental-agreements",
+      "name": "German rental agreements",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "601 sentences from the tenancy law of the German Civil Code and 312 sentences, classified according to a semantic type system consisting of 9 different classes, from German rental agreements.",
+      "paperUrl": "https://www.researchgate.net/publication/332171940_Classifying_Semantic_Types_of_Legal_Sentences_Portability_of_Machine_Learning_Models",
+      "datasetUrl": "https://github.com/sebischair/Legal-Sentence-Classification-Datasets-and-Models",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "German"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "german"
+      ],
+      "contentHash": "b3455fd4a0caa001af132c11b07e7f15146cc94ec74a20d74cc7109f2444d8ab"
+    },
+    {
+      "slug": "home-heinonline-org",
+      "name": "home.heinonline.org",
+      "kind": "website",
+      "category": "Websites",
+      "description": "a specialized legal and law-related research database that includes legal documents, journals, statutes, and more from the United States and other countries.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://home.heinonline.org",
+      "languages": [],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "website",
+        "multinational"
+      ],
+      "contentHash": "9d0c2b4ead3da97009a09192c888a47daa60f1f76abbd50b943d0de662651cfe"
+    },
+    {
+      "slug": "jec-qa",
+      "name": "JEC-QA",
+      "kind": "benchmark",
+      "category": "Question Answering",
+      "description": "the largest question answering dataset in the legal domain, collected from the National Judicial Examination of China. There are 26,365 questions in JEC-QA.",
+      "paperUrl": "https://arxiv.org/abs/1911.12011",
+      "datasetUrl": "https://jecqa.thunlp.org/",
+      "siteUrl": null,
+      "languages": [
+        "Chinese"
+      ],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "benchmark",
+        "chinese",
+        "china"
+      ],
+      "contentHash": "1d2bc028335ec0375491749fd7e5dbafec5da82e3a7dad71d14038ca32ac11d7"
+    },
+    {
+      "slug": "justia-com",
+      "name": "justia.com",
+      "kind": "website",
+      "category": "Websites",
+      "description": "provides access to a wide range of legal information, including cases, statutes, regulations, and legal articles. Covers both U.S. federal and state laws.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.justia.com",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "0ddf919b4cc8b0b364d8cc950ccabf69979fc6266f30e8b4f0520088b2cc7f3b"
+    },
+    {
+      "slug": "law-cornell-edu",
+      "name": "law.cornell.edu",
+      "kind": "website",
+      "category": "Websites",
+      "description": "operated by Cornell Law School, the LII offers access to U.S. federal and state laws, regulations, and court cases, along with legal articles and resources.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.law.cornell.edu",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "70c7a2636a721f95ca2bcd3cfe1e4f8828c78e94701467c22e8ba336fa33bea0"
+    },
+    {
+      "slug": "lbox-open",
+      "name": "LBOX OPEN",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "This paper present the first large-scale benchmark of Korean legal AI datasets, LBOX OPEN, that consists of one legal corpus, two classification tasks, two legal judgement prediction (LJP) tasks, and one summarization task.",
+      "paperUrl": "https://arxiv.org/abs/2206.05224",
+      "datasetUrl": "https://github.com/lbox-kr/lbox-open",
+      "siteUrl": null,
+      "languages": [
+        "Korean"
+      ],
+      "jurisdictions": [
+        "Korean"
+      ],
+      "tags": [
+        "benchmark",
+        "korean",
+        "korean"
+      ],
+      "contentHash": "6c778dad1148a49a8535a7060af8ddef2686218aafc2225632fb5f4c29e60c12"
+    },
+    {
+      "slug": "lecard",
+      "name": "LeCaRD",
+      "kind": "benchmark",
+      "category": "Legal Case Retrieval",
+      "description": "LeCaRD composes of 107 query cases and 10,700 candidate cases selected from a corpus of over 43,000 Chinese criminal judgements.",
+      "paperUrl": "https://dl.acm.org/doi/10.1145/3404835.3463250",
+      "datasetUrl": "https://github.com/myx666/LeCaRD",
+      "siteUrl": null,
+      "languages": [
+        "Chinese"
+      ],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "benchmark",
+        "chinese",
+        "china"
+      ],
+      "contentHash": "0ddf5153691606faa2d327da65bf37ad0fb3cad4a52655aba57d801c15da5219"
+    },
+    {
+      "slug": "lecardv2",
+      "name": "LeCaRDv2",
+      "kind": "benchmark",
+      "category": "Legal Case Retrieval",
+      "description": "LeCaRDv2 is one of the largest Chinese legal case retrieval datasets with the widest coverage of criminal charges. The dataset comprises 800 query cases and 55,192 candidate cases extracted from 4.3 million criminal case documents.",
+      "paperUrl": null,
+      "datasetUrl": "https://github.com/THUIR/LeCaRDv2",
+      "siteUrl": null,
+      "languages": [
+        "Chinese"
+      ],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "benchmark",
+        "chinese",
+        "china"
+      ],
+      "contentHash": "2431af5cdb905d00c832db4326056aaf4947c53cce6bc556aa638fa347952fac"
+    },
+    {
+      "slug": "legal-linking",
+      "name": "Legal Linking",
+      "kind": "benchmark",
+      "category": "Legal Case Entailment",
+      "description": "This paper describes a dataset and baseline systems for linking paragraphs from court cases to clauses or amendments in the US Constitution.",
+      "paperUrl": "https://aclanthology.org/W19-2205.pdf",
+      "datasetUrl": "https://github.com/mayhewsw/legal-linking",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "73212201245d100d675c61aa2dad9690933e1ff26df10fd720356fa95e819f15"
+    },
+    {
+      "slug": "legalbench",
+      "name": "LegalBench",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "LegalBench is a collaborative benchmark intended to evaluate English large language models on legal reasoning and legal text-based tasks. LegalBench currently consists of more than 90 tasks.",
+      "paperUrl": "https://arxiv.org/abs/2209.06120",
+      "datasetUrl": "https://github.com/HazyResearch/legalbench",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "multinational"
+      ],
+      "contentHash": "7e0e4aae5d459aca26c5b4dd131654ae6513c5af577b2a93c74de4869af02d9b"
+    },
+    {
+      "slug": "legallama",
+      "name": "LegalLAMA",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "LegalLAMA is a diverse probing benchmark suite comprising 8 sub-tasks that aims to assess the acquaintance of legal knowledge that PLMs acquired in pre-training.",
+      "paperUrl": "https://arxiv.org/abs/2305.07507",
+      "datasetUrl": "https://huggingface.co/datasets/lexlms/legal_lama",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "multinational"
+      ],
+      "contentHash": "8f7ec3ca51f83b85336f8bcba4142b052ba0c4db1fe461da2e49d502fb71df05"
+    },
+    {
+      "slug": "legifrance-gouv-fr",
+      "name": "legifrance.gouv.fr",
+      "kind": "website",
+      "category": "Websites",
+      "description": "a French legal publisher providing access to law codes and legal decisions.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.legifrance.gouv.fr",
+      "languages": [],
+      "jurisdictions": [
+        "France"
+      ],
+      "tags": [
+        "website",
+        "france"
+      ],
+      "contentHash": "2afe081de361de8fa29291a83bbe3934ef7f02fa5a90608d37e353d1f4d5915a"
+    },
+    {
+      "slug": "leven",
+      "name": "LEVEN",
+      "kind": "benchmark",
+      "category": "Entity extraction",
+      "description": "LEVEN contains 108 event types in total, including 64 charge-oriented events and 44 general events. Their distribution is shown below.",
+      "paperUrl": "https://aclanthology.org/2022.findings-acl.17.pdf",
+      "datasetUrl": "https://github.com/thunlp/LEVEN",
+      "siteUrl": null,
+      "languages": [
+        "Chinese"
+      ],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "benchmark",
+        "chinese",
+        "china"
+      ],
+      "contentHash": "e389ec2ac48877e959474ee14c4e6667558b5e6a332d6c988755a3f19ecdcc38"
+    },
+    {
+      "slug": "lexfile",
+      "name": "LeXFile",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "The LeXFiles is a new diverse English multinational legal corpus that we created including 11 distinct sub-corpora that cover legislation and case law from 6 primarily English-speaking legal systems (EU, CoE, Canada, US, UK, India). The corpus contains approx. 19 billion tokens.",
+      "paperUrl": "https://arxiv.org/abs/2305.07507",
+      "datasetUrl": "https://huggingface.co/datasets/lexlms/lex_files",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "corpus",
+        "english",
+        "multinational"
+      ],
+      "contentHash": "1b9acf7d03e369c9af6210e3d4fa9ebaada8f92b07ef94ba51d366a2ed036553"
+    },
+    {
+      "slug": "lexglue",
+      "name": "LexGLUE",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "LexGLUE comprises seven datasets: ECtHR Task A and B, SCOTUS, EUR-LEX, LEDGAR, UNFAIR-ToS, and CaseHOLD that are available for re-use and re-share with appropriate attribution.",
+      "paperUrl": "https://arxiv.org/abs/2110.00976",
+      "datasetUrl": "https://github.com/coastalcph/lex-glue",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "multinational"
+      ],
+      "contentHash": "4e9f543516478b1774bc791b7be1e0e8fdd438cb4244696d86a2758789811300"
+    },
+    {
+      "slug": "lexisnexis-com",
+      "name": "lexisnexis.com",
+      "kind": "website",
+      "category": "Websites",
+      "description": "another widely used legal research tool that offers global legal documents, cases, statutes, news, and commentaries.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.lexisnexis.com",
+      "languages": [],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "website",
+        "multinational"
+      ],
+      "contentHash": "be85470b42cf632714b5386a8532d44162bdec25bf8e262272cdff4941998fcd"
+    },
+    {
+      "slug": "lextreme",
+      "name": "LEXTREME",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "The dataset consists of 11 diverse multilingual legal NLU datasets. 6 datasets have one single configuration and 5 datasets have two or three configurations. This leads to a total of 18 tasks.",
+      "paperUrl": "https://arxiv.org/abs/2301.13126",
+      "datasetUrl": "https://huggingface.co/datasets/joelito/lextreme",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "179592a4c7395915844b70e76f5b39a3adbb802001b5984eaf47d8a405c19f89"
+    },
+    {
+      "slug": "maud",
+      "name": "MAUD",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "To address this challenge, we introduce the Merger Agreement Understanding Dataset (MAUD), an expert-annotated reading comprehension dataset based on the American Bar Association’s 2021 Public Target Deal Points Study, with over 39,000 examples and over 47,000 total annotations.",
+      "paperUrl": "https://arxiv.org/abs/2301.00876",
+      "datasetUrl": "https://drive.google.com/drive/folders/1RujOK2FZKdFSCJ15tqdyd42g8WLsYagj",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "f9f0cf669488d70ec9d74c245f2ad3650a6600b70db7a929da6a15b740194cda"
+    },
+    {
+      "slug": "mc4-legal",
+      "name": "MC4_legal",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "This dataset contains large text resources (~106GB in total) from mc4 filtered for legal data that can be used for pretraining language models.",
+      "paperUrl": null,
+      "datasetUrl": "https://huggingface.co/datasets/joelito/legal-mc4",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "corpus",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "0efee594e78b04ababc6928d9b574daa8bac52499d411fbaa56af567e3459c05"
+    },
+    {
+      "slug": "multi-lexsum",
+      "name": "Multi-LexSum",
+      "kind": "benchmark",
+      "category": "Summarization",
+      "description": "We introduce Multi-LexSum, a collection of 9,280 expert-authored summaries drawn from ongoing CRLC writing.",
+      "paperUrl": "https://arxiv.org/abs/2206.10883",
+      "datasetUrl": "https://multilexsum.github.io/",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [],
+      "tags": [
+        "benchmark",
+        "english"
+      ],
+      "contentHash": "a9315ddf5b541594e290aaaa0ae2667c4f7d427012c1573cd4b5d46675dff21f"
+    },
+    {
+      "slug": "multilegalpile",
+      "name": "MultiLegalPile",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "A 689GB corpus in 24 languages from 17 jurisdictions.",
+      "paperUrl": "https://arxiv.org/abs/2306.02069v2",
+      "datasetUrl": "https://huggingface.co/datasets/joelito/Multi_Legal_Pile",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "corpus",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "9a2d98ddf5ab704557356593ef61faec33c1c66dcd97644306fe78b4eeee38ca"
+    },
+    {
+      "slug": "multilegalsbd",
+      "name": "MultiLegalSBD",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "Sentence Boundary Detection (SBD) is one of the foundational building blocks of Natural Language Processing (NLP), with incorrectly split sentences heavily influencing the output quality of downstream tasks. We curated a diverse multilingual legal dataset consisting of over 130'000 annotated sentences in 6 languages.",
+      "paperUrl": "https://arxiv.org/abs/2305.01211",
+      "datasetUrl": "https://huggingface.co/datasets/rcds/MultiLegalSBD",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "d7c3287e7b0e1a104489b5eb2a53769f7ce12c2834b89364065cac021ce834b4"
+    },
+    {
+      "slug": "pacer-gov",
+      "name": "pacer.gov",
+      "kind": "website",
+      "category": "Websites",
+      "description": "the Public Access to Court Electronic Records (PACER) system provides access to U.S. federal court documents, including case filings, docket information, and court opinions. Registration and fees may apply.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.pacer.gov",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "429c08addd915a2f8e4fb6ac82ac943c9ef6de83fc98b7c6d06a0823c65b46ee"
+    },
+    {
+      "slug": "pile-of-law",
+      "name": "Pile of Law",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "A 256GB (and growing) dataset of open-source English-language legal and administrative data, covering court opinions, contracts, administrative rules, and legislative records.",
+      "paperUrl": "https://arxiv.org/abs/2207.00220",
+      "datasetUrl": "https://github.com/Breakend/PileOfLaw",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [],
+      "tags": [
+        "corpus",
+        "english"
+      ],
+      "contentHash": "747b51e64b129757fec30e9e81b136c1c2ea3ddaab4e783073cc5c14a913a59e"
+    },
+    {
+      "slug": "plain-english-summarization-of-contracts",
+      "name": "Plain English Summarization of Contracts",
+      "kind": "benchmark",
+      "category": "Summarization",
+      "description": "The dataset we propose contains 446 sets of parallel text.",
+      "paperUrl": "https://www.aclweb.org/anthology/W19-2201",
+      "datasetUrl": "https://github.com/lauramanor/legal_summarization#plain-english-summarization-of-contracts",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "65a46cd9f24b809bc6edb3c779d35351c1826ed7650bdd022a148a05f0f1a298"
+    },
+    {
+      "slug": "privacyqa",
+      "name": "PrivacyQA",
+      "kind": "benchmark",
+      "category": "Question Answering",
+      "description": "PrivacyQA is a corpus consisting of 1750 questions about the contents of privacy policies, paired with expert annotations.",
+      "paperUrl": "https://arxiv.org/abs/1911.00841",
+      "datasetUrl": "https://github.com/AbhilashaRavichander/PrivacyQA_EMNLP",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "4cd1f551c99ec984cc91b79226cfb58a25df247663fade8af8847a6d86ec4454"
+    },
+    {
+      "slug": "sara",
+      "name": "SARA",
+      "kind": "benchmark",
+      "category": "Question Answering",
+      "description": "A novel dataset based on US tax law, together with test cases.",
+      "paperUrl": "https://ceur-ws.org/Vol-2645/paper5.pdf",
+      "datasetUrl": "https://nlp.jhu.edu/law/",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "f71b84bfcedd2e9ad2ed7083c3f2a94415fc4a3a532cf75766a1a6e170ef486c"
+    },
+    {
+      "slug": "scale",
+      "name": "SCALE",
+      "kind": "benchmark",
+      "category": "Multi Legal Task",
+      "description": "In this paper, we introduce a novel NLP benchmark that poses challenges to current LLMs across four key dimensions: processing long documents (up to 50K tokens), utilizing domain specific knowledge (embodied in legal texts), multilingual understanding (covering five languages), and multitasking (comprising legal document to document Information Retrieval, Court View Generation, Leading Decision Summarization, Citation Extraction, and eight challenging Text Classification tasks).",
+      "paperUrl": "https://arxiv.org/abs/2306.09237",
+      "datasetUrl": "https://huggingface.co/rcds",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "Switzerland"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "switzerland"
+      ],
+      "contentHash": "e0bc92de5607f70bd334b88614b808b0dc73ed8a403dc0e8ad81ba493addd1ac"
+    },
+    {
+      "slug": "scdb-wustl-edu",
+      "name": "scdb.wustl.edu",
+      "kind": "website",
+      "category": "Websites",
+      "description": "information about every case decided by the US Supreme Court between 1791 and today.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "http://scdb.wustl.edu",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "f4822837020967c26f3f88b1111b034dadc75b0991ad068dd3945c71bfe3aaed"
+    },
+    {
+      "slug": "spanish-legal-domain-corpora",
+      "name": "Spanish Legal Domain Corpora",
+      "kind": "corpus",
+      "category": "General Corpus",
+      "description": "Our corpora comprises multiple digital resources and it has a total of 8.9GB of textual data.",
+      "paperUrl": "https://arxiv.org/abs/2110.12201",
+      "datasetUrl": "https://github.com/PlanTL-GOB-ES/lm-legal-es",
+      "siteUrl": null,
+      "languages": [
+        "Spanish"
+      ],
+      "jurisdictions": [
+        "Spanish"
+      ],
+      "tags": [
+        "corpus",
+        "spanish",
+        "spanish"
+      ],
+      "contentHash": "da3f76fcd1826746e250534ec279085f2d2033ace2e392afcf5cfaeac2e25d40"
+    },
+    {
+      "slug": "statmt-org",
+      "name": "statmt.org",
+      "kind": "website",
+      "category": "Websites",
+      "description": "Parallel text of the proceedings of the European Parliment, collected in 11 languages.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.statmt.org/europarl",
+      "languages": [],
+      "jurisdictions": [
+        "EU"
+      ],
+      "tags": [
+        "website",
+        "eu"
+      ],
+      "contentHash": "4e84fdc75f497e59b13e4d2e57f6e913580fdddda4b264c36ef6b6c48d7ecbb6"
+    },
+    {
+      "slug": "summarization-of-privacy-policies",
+      "name": "Summarization-of-Privacy-Policies",
+      "kind": "benchmark",
+      "category": "Summarization",
+      "description": "This dataset was extracted from the text of privacy policy, terms of service, and cookie policy of 151 companies. The Points and Plain English Summaries are extracted from tosdr.org.",
+      "paperUrl": "https://ceur-ws.org/Vol-2645/paper3.pdf",
+      "datasetUrl": "https://github.com/senjed/Summarization-of-Privacy-Policies",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [],
+      "tags": [
+        "benchmark",
+        "english"
+      ],
+      "contentHash": "001b4e389e4ab8ed5ebeb3ea82b54595ae4b89bd894f127a9a24e1d185143c3d"
+    },
+    {
+      "slug": "swiss-judgment-prediction",
+      "name": "Swiss-Judgment-Prediction",
+      "kind": "benchmark",
+      "category": "Document Classification",
+      "description": "The paper publicly release a multilingual (German, French, and Italian), diachronic (2000-2020) corpus of 85K cases from the Federal Supreme Court of Switzer- land (FSCS).",
+      "paperUrl": "https://aclanthology.org/2021.nllp-1.3/",
+      "datasetUrl": "https://github.com/joelniklaus/swissjudgementprediction",
+      "siteUrl": null,
+      "languages": [
+        "multilingual"
+      ],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "benchmark",
+        "multilingual",
+        "multinational"
+      ],
+      "contentHash": "0853f4948dd78c7bebac4b0d1aa4fb33579ebd5dcc7d225b034fe41a86d18a3b"
+    },
+    {
+      "slug": "uscode-house-gov",
+      "name": "uscode.house.gov",
+      "kind": "website",
+      "category": "Websites",
+      "description": "downloadable version of the US Code in XML format",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://uscode.house.gov/download/download.shtml",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "0b13a3e2caa62b27ccd39e9fe6c9c1568be655268298d54892df9210a959f102"
+    },
+    {
+      "slug": "uspto-gov",
+      "name": "uspto.gov",
+      "kind": "website",
+      "category": "Websites",
+      "description": "detailed patent litigation data on over 80k unique district court cases",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.uspto.gov/ip-policy/economic-research/research-datasets/patent-litigation-docket-reports-data",
+      "languages": [],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "website",
+        "america"
+      ],
+      "contentHash": "627878774d8c403ed32cf2dfd06257151f49f855114d3789f1ea997ea8c9ccf2"
+    },
+    {
+      "slug": "verbcl",
+      "name": "VerbCL",
+      "kind": "benchmark",
+      "category": "Others",
+      "description": "This paper presents a new dataset that consists of the citation graph of court opinions, which cite previously published court opinions in support of their arguments.",
+      "paperUrl": "https://arxiv.org/abs/2108.10120",
+      "datasetUrl": "https://uvaauas.figshare.com/articles/dataset/VerbCL_Dataset/14798878/1",
+      "siteUrl": null,
+      "languages": [
+        "English"
+      ],
+      "jurisdictions": [
+        "America"
+      ],
+      "tags": [
+        "benchmark",
+        "english",
+        "america"
+      ],
+      "contentHash": "a38c704d4e7835e8d0976706f0b15b9ca58836e8bffda4d3c3419c2b75b1a0ab"
+    },
+    {
+      "slug": "wenshu-court-gov-cn",
+      "name": "wenshu.court.gov.cn",
+      "kind": "website",
+      "category": "Websites",
+      "description": "judicial documents in China.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://wenshu.court.gov.cn",
+      "languages": [],
+      "jurisdictions": [
+        "China"
+      ],
+      "tags": [
+        "website",
+        "china"
+      ],
+      "contentHash": "e4a19bf218c8ff5d0d3a3296b04eb76c6483ac23e28a16b4fc5461a715a9bcf9"
+    },
+    {
+      "slug": "westlaw-com",
+      "name": "westlaw.com",
+      "kind": "website",
+      "category": "Websites",
+      "description": "a well-known legal research platform that provides access to legal documents, cases, statutes, commentaries, and legal news from around the world.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "https://www.westlaw.com",
+      "languages": [],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "website",
+        "multinational"
+      ],
+      "contentHash": "d15200c6bdc92eef2dc279ccb82c5b09112dd3d0a6a6f440a0c1717a6730a923"
+    },
+    {
+      "slug": "worldlii-org",
+      "name": "worldlii.org",
+      "kind": "website",
+      "category": "Websites",
+      "description": "a free and independent global legal research resource, aggregating legal materials from various countries and regions.",
+      "paperUrl": null,
+      "datasetUrl": null,
+      "siteUrl": "http://www.worldlii.org",
+      "languages": [],
+      "jurisdictions": [
+        "multinational"
+      ],
+      "tags": [
+        "website",
+        "multinational"
+      ],
+      "contentHash": "ed09b2701c8f83d503de2dc4832a99812c4bce6cb12709fd4b8c0718ca31ae5c"
+    }
+  ]
+}

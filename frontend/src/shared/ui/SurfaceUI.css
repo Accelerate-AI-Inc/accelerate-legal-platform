@@ -1,0 +1,104 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   Accelerate Legal — material system.
+
+   Editorial and flat: every tier is an opaque fill plus a hairline rule.
+   Depth is communicated by rule weight and, for true overlays only, one soft
+   shadow. There is exactly one blurred material left (`surface-veil`), used
+   where content visibly passes beneath a floating composer.
+
+   Each class owns all three material properties — background, border and
+   shadow — so components never restate a surface border or invent a
+   box-shadow recipe. Shared verbatim with the Word add-in.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+    --surface-panel-background: var(--surface, #ffffff);
+    --surface-panel-border: var(--rule, #e3ded5);
+
+    --surface-inset-background: var(--surface-sunk, #f4f1ec);
+    --surface-inset-border: var(--rule-strong, #cdc6ba);
+
+    --surface-chrome-background: var(--surface, #ffffff);
+    --surface-chrome-border: var(--rule, #e3ded5);
+
+    --surface-overlay-background: var(--surface, #ffffff);
+    --surface-overlay-border: var(--rule-strong, #cdc6ba);
+    /* The only elevation recipe in the system. Overlays must read as
+       detached from the page; nothing else may. */
+    --surface-overlay-shadow:
+        0 1px 2px rgba(23, 24, 28, 0.04), 0 12px 32px rgba(23, 24, 28, 0.1);
+
+    --surface-veil-background: rgba(250, 248, 245, 0.94);
+    --surface-veil-border: var(--rule, #e3ded5);
+    --surface-veil-action-background: rgba(250, 248, 245, 0.82);
+    --surface-veil-action-background-hover: rgba(250, 248, 245, 0.96);
+}
+
+.dark {
+    --surface-panel-background: var(--surface, #1c1e23);
+    --surface-panel-border: var(--rule, #2c2f36);
+
+    --surface-inset-background: var(--surface-sunk, #121316);
+    --surface-inset-border: var(--rule-strong, #454a54);
+
+    --surface-chrome-background: var(--surface, #1c1e23);
+    --surface-chrome-border: var(--rule, #2c2f36);
+
+    --surface-overlay-background: var(--surface, #1c1e23);
+    --surface-overlay-border: var(--rule-strong, #454a54);
+    --surface-overlay-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.5);
+
+    --surface-veil-background: rgba(21, 22, 26, 0.94);
+    --surface-veil-border: var(--rule, #2c2f36);
+    --surface-veil-action-background: rgba(28, 30, 35, 0.82);
+    --surface-veil-action-background-hover: rgba(28, 30, 35, 0.96);
+}
+
+/* Tier 1 — broad resting surfaces: tables, cards, message bodies. */
+:where(.surface-panel) {
+    border: 1px solid var(--surface-panel-border);
+    background-color: var(--surface-panel-background);
+}
+
+/* Tier 2 — recessed controls: inputs, dropdown triggers, search, tab pills. */
+:where(.surface-inset) {
+    border: 1px solid var(--surface-inset-border);
+    background-color: var(--surface-inset-background);
+}
+
+/* Tier 3 — persistent app chrome: the sidebar rail and side panels. Callers
+   choose which edge carries the rule with `rule-r` / `rule-b` / `rule-t`. */
+:where(.surface-chrome) {
+    background-color: var(--surface-chrome-background);
+}
+
+/* Tier 4 — detached overlays: modal frames, open menus, popovers. */
+.surface-overlay {
+    box-shadow: var(--surface-overlay-shadow);
+}
+
+:where(.surface-overlay) {
+    border: 1px solid var(--surface-overlay-border);
+    background-color: var(--surface-overlay-background);
+}
+
+/* Translucent — chat composer and ask-input surfaces, where messages pass
+   underneath. The only material in the system that blurs. */
+.surface-veil {
+    backdrop-filter: blur(16px);
+}
+
+:where(.surface-veil) {
+    border: 1px solid var(--surface-veil-border);
+    background: var(--surface-veil-background);
+}
+
+/* Compact over-content action, e.g. scroll-to-bottom. Use with .surface-veil. */
+.surface-veil-action {
+    background: var(--surface-veil-action-background);
+}
+
+.surface-veil-action:hover {
+    background: var(--surface-veil-action-background-hover);
+}

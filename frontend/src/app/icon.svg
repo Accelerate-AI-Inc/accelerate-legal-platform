@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Accelerate Legal mark. Flat, two-color, no gradients: a citation
+       bracket around a rising bar. Keep in step with
+       frontend/src/shared/ui/BrandMarkUI.tsx. -->
+  <rect width="32" height="32" rx="4" fill="#faf8f5" />
+  <g fill="none" stroke-linecap="square">
+    <path d="M11 5H7.5A1.5 1.5 0 0 0 6 6.5v19A1.5 1.5 0 0 0 7.5 27H11"
+          stroke="#17181c" stroke-width="2" />
+    <path d="M21 5h3.5A1.5 1.5 0 0 1 26 6.5v19a1.5 1.5 0 0 1-1.5 1.5H21"
+          stroke="#17181c" stroke-width="2" />
+    <path d="M11.5 22 20.5 10" stroke="#8a2433" stroke-width="2.5" />
+    <path d="M20.5 10h-4.5M20.5 10v4.5" stroke="#8a2433" stroke-width="2.5" />
+  </g>
+</svg>
