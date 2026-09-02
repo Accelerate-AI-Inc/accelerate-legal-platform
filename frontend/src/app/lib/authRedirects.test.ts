@@ -17,6 +17,18 @@ describe("safeAuthNext", () => {
         );
         expect(safeAuthNext("/reset-password")).toBe("/reset-password");
         expect(safeAuthNext("/onboarding/profile")).toBe("/onboarding/profile");
+        expect(safeAuthNext("/auth/desktop?requestId=abc")).toBe(
+            "/auth/desktop?requestId=abc",
+        );
+    });
+
+    it("honours a caller-supplied fallback for unknown destinations", () => {
+        expect(safeAuthNext("/unknown", "/onboarding/profile")).toBe(
+            "/onboarding/profile",
+        );
+        expect(safeAuthNext(null, "/onboarding/profile")).toBe(
+            "/onboarding/profile",
+        );
     });
 
     it.each([

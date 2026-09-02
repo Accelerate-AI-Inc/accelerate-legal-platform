@@ -1,0 +1,118 @@
+{
+  "name": "accelerate-legal-desktop",
+  "productName": "Accelerate Legal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Accelerate Legal for macOS: the hosted web app in a native window, with system-browser sign-in, deep links, and updates.",
+  "author": "Accelerate AI",
+  "license": "AGPL-3.0-only",
+  "main": "electron/main.cjs",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dev": "ACCELERATE_DESKTOP_DEV=1 electron .",
+    "test": "node --test electron/*.test.cjs",
+    "smoke": "node scripts/smoke.mjs",
+    "check": "node --check electron/main.cjs && node --check electron/preload.cjs && node --check pages/connect.js && node --check pages/offline.js",
+    "icon": "node scripts/render-icon.mjs",
+    "pack": "electron-builder --mac --dir",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:mac:dmg": "electron-builder --mac dmg --publish never",
+    "dist:mac:zip": "electron-builder --mac zip --publish never"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "44.1.1",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "io.accelerateai.legal.desktop",
+    "productName": "Accelerate Legal",
+    "copyright": "Copyright \u00a9 2026 Accelerate AI. AGPL-3.0-only.",
+    "artifactName": "Accelerate-Legal-${version}-${os}-${arch}.${ext}",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron/**",
+      "pages/**",
+      "package.json",
+      "!electron/**/*.test.cjs"
+    ],
+    "asar": true,
+    "protocols": [
+      {
+        "name": "Accelerate Legal",
+        "schemes": [
+          "accelerate-legal"
+        ]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "asadmain124",
+        "repo": "accelerate-legal-platform"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "assets/icon.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "electron/entitlements.mac.plist",
+      "entitlementsInherit": "electron/entitlements.mac.inherit.plist",
+      "notarize": true,
+      "darkModeSupport": true,
+      "extendInfo": {
+        "CFBundleDisplayName": "Accelerate Legal",
+        "CFBundleName": "Accelerate Legal",
+        "NSHumanReadableCopyright": "Copyright \u00a9 2026 Accelerate AI. AGPL-3.0-only."
+      },
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "title": "Install Accelerate Legal",
+      "sign": false,
+      "backgroundColor": "#faf8f5",
+      "iconSize": 96,
+      "window": {
+        "width": 560,
+        "height": 360
+      },
+      "contents": [
+        {
+          "x": 160,
+          "y": 170,
+          "type": "file"
+        },
+        {
+          "x": 400,
+          "y": 170,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}

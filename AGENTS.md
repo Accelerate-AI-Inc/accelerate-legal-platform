@@ -6,12 +6,15 @@ These instructions apply to the entire repository. Keep changes focused,
 preserve unrelated work in the tree, and follow the more detailed guidance in
 `CONTRIBUTING.md` and `docs/` when working in a documented subsystem.
 
-The repository requires Node.js 22 or newer and contains three applications:
+The repository requires Node.js 22 or newer and contains four applications:
 
 - `frontend/`: Next.js web application.
 - `backend/`: Express API, document processing, database access, and LLM
   integration.
 - `word-addin/`: Microsoft Word task-pane add-in.
+- `desktop/`: Electron shell for macOS that renders the hosted web app. It
+  bundles no backend code; see `desktop/README.md`. Keep electron-free logic
+  in its own `*.cjs` module with a `*.test.cjs` neighbour run by `node --test`.
 
 The root `e2e/` directory contains the web application's Playwright tests.
 
@@ -165,6 +168,9 @@ npm run build --prefix frontend
 npm run typecheck --prefix word-addin
 npm run build --prefix word-addin
 npm run test:e2e --prefix word-addin
+
+npm test --prefix desktop
+npm run check --prefix desktop
 
 npm run test:e2e
 npm run test:e2e:local

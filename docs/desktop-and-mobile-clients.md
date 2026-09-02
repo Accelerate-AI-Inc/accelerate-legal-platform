@@ -2,9 +2,27 @@
 
 This note compares the packaging approach used by
 [LexEdge legal-hermes](https://github.com/Lexedgeai26/legal-hermes) with the
-Accelerate Legal architecture, and lays out how Accelerate Legal can ship as a
-macOS app, a Windows app, and an iOS app. It is a plan, not a description of
-shipped behavior. Nothing in this document is implemented yet.
+Accelerate Legal architecture, and lays out how Accelerate Legal ships as a
+macOS app and can ship as a Windows app and an iOS app.
+
+## Status
+
+- **macOS: shipped** in `desktop/` as an Electron shell around the hosted web
+  app. See [desktop/README.md](../desktop/README.md) for install, the
+  system-browser Google sign-in flow, and building signed installers.
+  Electron was chosen over Tauri for the first release because its packaging
+  and hardening could be lifted directly from legal-hermes and because
+  Chromium matches the web app's Playwright coverage; the Tauri option below
+  remains the path that also reaches iOS.
+- **Backend and frontend support** for a second client shipped alongside it:
+  `POST /auth/handoff/issue` mints a handoff ticket for the current cookie
+  session, `POST /auth/handoff` redeems from any trusted origin, the web app
+  gained `/auth/desktop` and a `window.accelerateDesktop` bridge, and the
+  login page honours a `next` destination.
+- **Windows and iOS: not started.** The plan below still applies; the
+  Electron shell builds for Windows with an NSIS target added to
+  `desktop/package.json` and a `windows-latest` job, and the deep-link,
+  navigation, and sign-in modules are platform-neutral.
 
 ## Summary
 
@@ -237,7 +255,3 @@ and add native value. Sequence:
   browser fallback, so the web build never imports Tauri or Electron.
 - Distribute through signed installers only. Unsigned ZIPs are for internal
   testing, as legal-hermes's own runbook states.
-
-## Verification for this document
-
-This change adds documentation only. No build or test commands were run.

@@ -41,6 +41,17 @@ export function configuredApiPublicUrl(
   return required(env, ["API_PUBLIC_URL"]).replace(/\/+$/, "");
 }
 
+/**
+ * Handoff tickets need the encryption secret. The Word add-in makes it
+ * mandatory at startup; the desktop app treats a missing secret as "desktop
+ * sign-in disabled" and reports that to the user instead of failing.
+ */
+export function isAuthHandoffConfigured(
+  env: NodeJS.ProcessEnv = process.env,
+): boolean {
+  return (env.AUTH_HANDOFF_ENCRYPTION_SECRET?.trim() ?? "").length >= 32;
+}
+
 export function authHandoffEncryptionSecret(
   env: NodeJS.ProcessEnv = process.env,
 ): string {

@@ -8,7 +8,9 @@ import {
     exchangeAuthCode,
     getAuthSession,
     getMfaAssurance,
+    issueAuthHandoff,
     listMfaFactors,
+    redeemAuthHandoff,
     login,
     logout,
     requestPasswordReset,
@@ -304,5 +306,50 @@ describe("cookie auth client", () => {
     it("is a no-op during server rendering", () => {
         vi.stubGlobal("window", undefined);
         expect(() => clearLegacyBrowserAuthStorage()).not.toThrow();
+    });
+
+    it("mints a desktop handoff ticket for the current cookie session", async () => {
+        fetchMock.mockResolvedValue(
+            new Response(JSON.stringify({ ticket: "t".repeat(43) }), {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+            }),
+        );
+
+        await expect(issueAuthHandoff("r".repeat(43))).resolves.toEqual({
+            ticket: "t".repeat(43),
+        });
+        expect(fetchMock).toHaveBeenCalledWith(
+            "/api/auth/handoff/issue",
+            expect.objectContaining({
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify({ requestId: "r".repeat(43) }),
+            }),
+        );
+    });
+
+    it("redeems a desktop handoff ticket in the app window", async () => {
+        fetchMock.mockResolvedValue(
+            new Response(JSON.stringify({ user }), {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+            }),
+        );
+
+        await expect(
+            redeemAuthHandoff("t".repeat(43), "r".repeat(43)),
+        ).resolves.toEqual({ user });
+        expect(fetchMock).toHaveBeenCalledWith(
+            "/api/auth/handoff",
+            expect.objectContaining({
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify({
+                    ticket: "t".repeat(43),
+                    requestId: "r".repeat(43),
+                }),
+            }),
+        );
     });
 });

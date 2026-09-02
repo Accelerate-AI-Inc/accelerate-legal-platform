@@ -5,6 +5,9 @@ out
 build
 .open-next
 
+# electron-builder output
+desktop/release/
+
 .env
 .env.*
 !.env.example

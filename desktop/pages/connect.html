@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Connect to Accelerate Legal</title>
+    <link rel="stylesheet" href="setup.css" />
+  </head>
+  <body>
+    <main>
+      <div class="brand" aria-hidden="true">
+        <svg viewBox="0 0 32 32" role="img"><rect width="32" height="32" rx="4" fill="#faf8f5" /><g fill="none" stroke-linecap="square"><path d="M11 5H7.5A1.5 1.5 0 0 0 6 6.5v19A1.5 1.5 0 0 0 7.5 27H11" stroke="#17181c" stroke-width="2" /><path d="M21 5h3.5A1.5 1.5 0 0 1 26 6.5v19a1.5 1.5 0 0 1-1.5 1.5H21" stroke="#17181c" stroke-width="2" /><path d="M11.5 22 20.5 10" stroke="#8a2433" stroke-width="2.5" /><path d="M20.5 10h-4.5M20.5 10v4.5" stroke="#8a2433" stroke-width="2.5" /></g></svg>
+        <span>Accelerate Legal</span>
+      </div>
+      <form class="card" id="connect-form" novalidate>
+        <h1>Connect to your server</h1>
+        <p>
+          Most people can keep the default. If your firm runs its own Accelerate Legal
+          server, enter its address instead.
+        </p>
+        <label for="server-url">Server address</label>
+        <input id="server-url" name="server-url" type="url" autocomplete="url" spellcheck="false" inputmode="url" placeholder="https://app.accelerateai.io" />
+        <p class="hint">Example: <code>https://legal.yourfirm.com</code></p>
+        <div class="error" id="error" role="alert" aria-live="polite"></div>
+        <div class="status" id="status" aria-live="polite"></div>
+        <div class="actions">
+          <button type="submit" id="connect">Connect</button>
+          <button type="button" class="secondary" id="use-default">Use default</button>
+        </div>
+      </form>
+      <footer id="footer"></footer>
+    </main>
+    <script src="connect.js"></script>
+  </body>
+</html>

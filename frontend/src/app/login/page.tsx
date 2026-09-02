@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/app/lib/authApi";
+import { safeAuthNext } from "@/app/lib/authRedirects";
 import { Input } from "@/app/components/ui/input";
 import { PillButton } from "@/app/components/ui/pill-button";
 import Link from "next/link";
@@ -23,8 +24,15 @@ const LOGIN_ERROR_MESSAGES = {
     email_not_confirmed: "Confirm your email address before logging in.",
 } as const;
 
-export default function LoginPage() {
+const DEFAULT_NEXT = "/onboarding/profile";
+
+function LoginContent() {
     const router = useRouter();
+    const searchParams = useSearchParams();
+    // `next` lets the desktop sign-in page and other callers return here
+    // and continue; it is allow-listed, so an unknown value falls back to
+    // onboarding exactly as before.
+    const next = safeAuthNext(searchParams.get("next"), DEFAULT_NEXT);
     const {
         isAuthenticated,
         authLoading,
@@ -39,9 +47,9 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (!authLoading && isAuthenticated) {
-            router.replace("/onboarding/profile");
+            router.replace(next);
         }
-    }, [authLoading, isAuthenticated, router]);
+    }, [authLoading, isAuthenticated, next, router]);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -51,7 +59,7 @@ export default function LoginPage() {
         try {
             await login(email, password);
             await refreshSession();
-            router.push("/onboarding/profile");
+            router.push(next);
         } catch (error: unknown) {
             setError(
                 knownErrorCodeMessage(
@@ -144,6 +152,11 @@ export default function LoginPage() {
                             onError={setError}
                             disabled={loading}
                             onLoadingChange={setLoading}
+                            next={next}
+                            onDesktopSignedIn={async (destination) => {
+                                await refreshSession();
+                                router.push(destination);
+                            }}
                         />
                     </form>
                 </div>
@@ -158,5 +171,13 @@ export default function LoginPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={null}>
+            <LoginContent />
+        </Suspense>
     );
 }

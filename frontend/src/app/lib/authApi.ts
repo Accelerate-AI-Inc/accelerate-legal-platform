@@ -91,6 +91,25 @@ export async function exchangeAuthCode(code: string) {
     });
 }
 
+/**
+ * Mint a single-use ticket that moves the current cookie session into the
+ * desktop app. Called by `/auth/desktop` in the system browser.
+ */
+export async function issueAuthHandoff(requestId: string) {
+    return authRequest<{ ticket: string }>("/handoff/issue", {
+        method: "POST",
+        body: JSON.stringify({ requestId }),
+    });
+}
+
+/** Redeem a handoff ticket inside the desktop app window. */
+export async function redeemAuthHandoff(ticket: string, requestId: string) {
+    return authRequest<{ user: AuthUser }>("/handoff", {
+        method: "POST",
+        body: JSON.stringify({ ticket, requestId }),
+    });
+}
+
 export async function requestPasswordReset(email: string) {
     return authRequest<void>("/password-reset", {
         method: "POST",
