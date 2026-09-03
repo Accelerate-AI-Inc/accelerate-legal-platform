@@ -8,10 +8,6 @@ drafting, and legal research.
 It combines a Next.js frontend, an Express backend, Supabase Auth/Postgres,
 and Cloudflare R2-compatible object storage.
 
-Website: [accelerateai.io](https://accelerateai.io)
-
-![Accelerate Legal assistant home screen](docs/assets/accelerate-home.png)
-
 ## Features
 
 - Chat with legal documents and open matters
