@@ -21,6 +21,8 @@ Website: [accelerateai.io](https://accelerateai.io)
 - Verify citations and research US case law with CourtListener
 - Browse a curated catalog of legal-AI datasets, benchmarks, and research sources
 - Work from Microsoft Word with the beta task-pane add-in
+- Use the native macOS app, which wraps the hosted web app with system-browser
+  sign-in, deep links, and background updates
 - Run supported language models locally through Ollama
 
 ## Quick start
@@ -64,6 +66,7 @@ authentication behavior, Ollama setup, and first-run guidance.
 | `frontend/` | Next.js web application |
 | `backend/` | Express API, document processing, and database access |
 | `word-addin/` | Microsoft Word task-pane add-in (beta) |
+| `desktop/` | macOS desktop app (Electron shell around the hosted web app) |
 | `backend/schema.sql` | Complete schema for fresh databases |
 | `backend/migrations/` | Dated migrations for existing deployments |
 | `scripts/import-legal-ai-resources.mjs` | Regenerates the Legal AI resources catalog |
@@ -78,6 +81,7 @@ authentication behavior, Ollama setup, and first-run guidance.
 - [Troubleshooting](docs/troubleshooting.md)
 - [CourtListener integration](docs/courtlistener.md)
 - [Microsoft Word add-in](word-addin/README.md)
+- [macOS desktop app](desktop/README.md)
 - [Tamper-evident exports](docs/tamper-evident-exports.md)
 - [Safe local testing](docs/safe-local-testing.md)
 - [End-to-end testing and CI](docs/e2e-ci.md)

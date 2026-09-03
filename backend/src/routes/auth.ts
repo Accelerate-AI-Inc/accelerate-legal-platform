@@ -8,6 +8,7 @@ import {
 } from "../lib/authSession";
 import { consumeAuthHandoff, issueAuthHandoff } from "../lib/authHandoff";
 import { requestOriginIsWordAddin } from "../lib/origins";
+import { isAuthHandoffConfigured } from "../lib/runtimeConfig";
 import { requireAuth } from "../middleware/auth";
 import { requireTrustedOrigin } from "../middleware/trustedOrigin";
 
@@ -42,6 +43,7 @@ const handoffSchema = z.object({
     .regex(/^[A-Za-z0-9_-]+$/),
   requestId: handoffRequestIdSchema,
 });
+const handoffIssueSchema = z.object({ requestId: handoffRequestIdSchema });
 const passwordSchema = z.object({
   password: z.string().min(8).max(4096),
   signOut: z.boolean().optional(),
@@ -241,16 +243,16 @@ authRouter.post("/exchange", async (req, res) => {
   }
 });
 
+/**
+ * Redeem a single-use handoff ticket for a cookie session. Tickets are bound
+ * to the origin that issued them, and `requireTrustedOrigin` already gates
+ * this router, so any trusted client may redeem: the Word task pane redeems
+ * tickets minted by its OAuth dialog, and the desktop app redeems tickets
+ * minted by `/handoff/issue` from the web origin it renders.
+ */
 authRouter.post("/handoff", async (req, res) => {
   const parsed = handoffSchema.safeParse(req.body);
   if (!parsed.success) return invalidBody(res);
-  if (!requestOriginIsWordAddin(req.get("origin"))) {
-    res.status(403).json({
-      code: "word_handoff_origin_required",
-      detail: "The authentication handoff origin is not allowed.",
-    });
-    return;
-  }
 
   try {
     const handoff = await consumeAuthHandoff({
@@ -287,6 +289,50 @@ authRouter.post("/handoff", async (req, res) => {
     res.json({ user: publicAuthUser(data.user) });
   } catch (error) {
     authError(res, error, "Authentication handoff could not be completed.");
+  }
+});
+
+/**
+ * Mint a handoff ticket for the current cookie session. The desktop app opens
+ * the system browser on `/auth/desktop?requestId=…`; once the user is signed
+ * in there, the page calls this route and returns the ticket to the app over
+ * the `accelerate-legal://` deep link. The app then redeems it from its own
+ * window, which renders the same origin, via `POST /auth/handoff`.
+ *
+ * The ticket alone is useless without the request id, which never leaves the
+ * app, so an intercepted deep link cannot be redeemed by another process.
+ */
+authRouter.post("/handoff/issue", requireAuth, async (req, res) => {
+  const parsed = handoffIssueSchema.safeParse(req.body);
+  if (!parsed.success) return invalidBody(res);
+  if (!isAuthHandoffConfigured()) {
+    res.status(403).json({
+      code: "auth_handoff_disabled",
+      detail: "Desktop sign-in is not enabled on this server.",
+    });
+    return;
+  }
+  const client = cookieClient(req, res);
+  if (!client) return;
+
+  try {
+    const { data, error } = await client.auth.getSession();
+    if (error || !data.session) {
+      res.status(401).json({
+        code: "cookie_session_required",
+        detail: "A cookie-authenticated session is required.",
+      });
+      return;
+    }
+    const ticket = await issueAuthHandoff({
+      userId: data.session.user.id,
+      requestId: parsed.data.requestId,
+      origin: requestOrigin(req),
+      session: data.session,
+    });
+    res.json({ ticket });
+  } catch (error) {
+    authError(res, error, "Desktop sign-in could not be prepared.");
   }
 });
 

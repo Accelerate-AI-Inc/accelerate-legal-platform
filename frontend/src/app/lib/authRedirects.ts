@@ -1,5 +1,6 @@
 const AUTH_REDIRECT_PATHS = new Set([
     "/assistant",
+    "/auth/desktop",
     "/login",
     "/reset-password",
     "/settings",

@@ -3,21 +3,23 @@ import userEvent from "@testing-library/user-event";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import LoginPage from "./page";
 
-const { login, startGoogleOAuth, refreshSession, replace, push } = vi.hoisted(
-    () => ({
+const { login, startGoogleOAuth, refreshSession, replace, push, navigation } =
+    vi.hoisted(() => ({
         login: vi.fn(),
         startGoogleOAuth: vi.fn(),
         refreshSession: vi.fn(),
         replace: vi.fn(),
         push: vi.fn(),
-    }),
-);
+        navigation: { search: "" },
+    }));
 
 vi.mock("next/navigation", () => ({
     useRouter: () => ({ replace, push }),
+    useSearchParams: () => new URLSearchParams(navigation.search),
 }));
 
-vi.mock("@/app/lib/authApi", () => ({
+vi.mock("@/app/lib/authApi", async (importOriginal) => ({
+    ...(await importOriginal<typeof import("@/app/lib/authApi")>()),
     login,
     startGoogleOAuth,
 }));
@@ -42,6 +44,49 @@ describe("LoginPage", () => {
         refreshSession.mockResolvedValue(null);
         replace.mockReset();
         push.mockReset();
+        navigation.search = "";
+    });
+
+    it("returns to an allow-listed next destination after logging in", async () => {
+        navigation.search = "next=%2Fauth%2Fdesktop%3FrequestId%3Dabcdefghijklmnop";
+        login.mockResolvedValue({ user: { id: "user-1" } });
+        startGoogleOAuth.mockResolvedValue({ url: "https://accounts.example.test" });
+        const user = userEvent.setup();
+        render(<LoginPage />);
+
+        await user.type(
+            screen.getByRole("textbox", { name: "Email" }),
+            "existing@example.com",
+        );
+        await user.type(screen.getByLabelText("Password"), "oldpass");
+        await user.click(screen.getByRole("button", { name: "Log in" }));
+
+        expect(push).toHaveBeenCalledWith(
+            "/auth/desktop?requestId=abcdefghijklmnop",
+        );
+
+        await user.click(
+            screen.getByRole("button", { name: "Continue with Google" }),
+        );
+        expect(startGoogleOAuth).toHaveBeenCalledWith(
+            "/auth/desktop?requestId=abcdefghijklmnop",
+        );
+    });
+
+    it("ignores an unknown next destination", async () => {
+        navigation.search = "next=https%3A%2F%2Fevil.example";
+        login.mockResolvedValue({ user: { id: "user-1" } });
+        const user = userEvent.setup();
+        render(<LoginPage />);
+
+        await user.type(
+            screen.getByRole("textbox", { name: "Email" }),
+            "existing@example.com",
+        );
+        await user.type(screen.getByLabelText("Password"), "oldpass");
+        await user.click(screen.getByRole("button", { name: "Log in" }));
+
+        expect(push).toHaveBeenCalledWith("/onboarding/profile");
     });
 
     it("allows an existing account to submit a password shorter than the new minimum", async () => {

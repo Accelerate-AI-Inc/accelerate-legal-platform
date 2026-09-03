@@ -20,6 +20,11 @@
   setup, sideloading, builds, storage behavior, testing, and troubleshooting
 - [Tamper-evident exports](tamper-evident-exports.md) — document hashes and
   optional signed manifests
+- [macOS desktop app](../desktop/README.md) — install, sign-in flow, building
+  and signing installers
+- [Desktop and mobile clients](desktop-and-mobile-clients.md) — what shipped for
+  macOS, and the plan for Windows and iOS, compared with the legal-hermes
+  desktop app
 
 ## Frontend
 
