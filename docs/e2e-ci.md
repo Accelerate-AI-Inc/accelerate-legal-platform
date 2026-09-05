@@ -24,7 +24,10 @@ job:
    converges with this fresh-install path;
 4. writes `backend/.env` and `frontend/.env.local` from the live Supabase values;
 5. builds the backend and runs the pinned `sync:workflows` release job, matching
-   production ordering so the default and add-on catalog exists before startup;
+   production ordering so the default and add-on catalog exists before startup.
+   The job is best-effort in CI: the catalog source repository is not reachable
+   from this repository's runners, so a failed sync is surfaced as a warning
+   and the suite runs against an empty catalog, which no spec depends on;
 6. **builds** the web app (`next build`) and serves it with `next start` — a
    production build, not `next dev`, so there is no on-demand compilation (which
    makes first-hit page loads slow enough to time out specs) and no dev

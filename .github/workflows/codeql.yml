@@ -28,6 +28,9 @@ jobs:
       contents: read
       # Required to upload results to code scanning.
       security-events: write
+      # The analyze step reads its own workflow run for status reporting;
+      # without this the job ends in "Resource not accessible by integration".
+      actions: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
