@@ -45,14 +45,14 @@ concurrency:
 
 env:
   # The upgrade-path baseline: a commit where schema.sql and the migrations
-  # were in agreement. 9a1277b (2026-06-15, "refactor: add table primitive
-  # and migrations by date; feat: add mcp connectors") is the commit that
-  # introduced the dated-migration convention itself. A deployment created
-  # from this commit's schema.sql, upgraded by the book ever since, is the
-  # "existing deployment" this check impersonates. Advance the pin
-  # deliberately (to another known-good sync point) — never to silence a
-  # failure, because a failure means the two shapes genuinely differ.
-  BASELINE_REF: 9a1277ba99cbd7dfae77e5b882e5cef8521fca2f
+  # were in agreement. This repository's history starts at e3524b3 (the
+  # initial "Rebrand to Accelerate Legal" commit), whose schema.sql already
+  # folds in every migration shipped up to that point, so a deployment created
+  # from it and upgraded by the book ever since is the "existing deployment"
+  # this check impersonates. Advance the pin deliberately (to another
+  # known-good sync point) — never to silence a failure, because a failure
+  # means the two shapes genuinely differ.
+  BASELINE_REF: e3524b3de40662b9360facbddcb6e4a1a993b823
 
 jobs:
   drift:

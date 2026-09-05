@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import {
     desktopAuthDeepLink,
     getDesktopBridge,
@@ -14,6 +14,16 @@ describe("desktop bridge detection", () => {
     it("reports a plain browser when no bridge is injected", () => {
         expect(getDesktopBridge()).toBeNull();
         expect(isDesktopApp()).toBe(false);
+    });
+
+    it("reports no bridge during server rendering", () => {
+        vi.stubGlobal("window", undefined);
+        try {
+            expect(getDesktopBridge()).toBeNull();
+            expect(isDesktopApp()).toBe(false);
+        } finally {
+            vi.unstubAllGlobals();
+        }
     });
 
     it("ignores a malformed bridge object", () => {

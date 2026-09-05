@@ -145,6 +145,9 @@ import {
     uploadProjectDocument,
     uploadReviewDocument,
     uploadStandaloneDocument,
+    getLegalResource,
+    getLegalResourceFilterOptions,
+    listLegalResources,
 } from "./accelerateApi";
 
 const fetchMock = vi.fn();
@@ -2610,5 +2613,89 @@ describe("unwrapping and blob wrappers", () => {
 
         await exportTabularReviewsData();
         expect(lastFetchCall().url).toBe("/api/user/tabular-reviews/export");
+    });
+
+    describe("legal resources catalog", () => {
+        function jsonResponse(body: unknown) {
+            return new Response(JSON.stringify(body), {
+                status: 200,
+                headers: { "Content-Type": "application/json" },
+            });
+        }
+
+        it("lists the catalog without a query string when no filters are set", async () => {
+            const page = { items: [], total: 0, limit: 20, offset: 0 };
+            fetchMock.mockResolvedValue(jsonResponse(page));
+
+            await expect(listLegalResources()).resolves.toEqual(page);
+            expect(fetchMock.mock.calls[0][0]).toBe("/api/legal-resources");
+        });
+
+        it("encodes every supported filter into the query string", async () => {
+            fetchMock.mockResolvedValue(jsonResponse({ items: [], total: 0 }));
+
+            await listLegalResources({
+                search: "case law",
+                kind: "dataset" as never,
+                category: "Legal Research",
+                language: "en",
+                jurisdiction: "US",
+                limit: 10,
+                offset: 20,
+            });
+
+            const url = new URL(
+                fetchMock.mock.calls[0][0] as string,
+                "https://app.local",
+            );
+            expect(url.pathname).toBe("/api/legal-resources");
+            expect(Object.fromEntries(url.searchParams)).toEqual({
+                q: "case law",
+                kind: "dataset",
+                category: "Legal Research",
+                language: "en",
+                jurisdiction: "US",
+                limit: "10",
+                offset: "20",
+            });
+        });
+
+        it("skips empty filters and keeps zero offsets", async () => {
+            fetchMock.mockResolvedValue(jsonResponse({ items: [], total: 0 }));
+
+            await listLegalResources({
+                search: null,
+                kind: null,
+                category: "",
+                limit: 0,
+                offset: 0,
+            });
+
+            expect(fetchMock.mock.calls[0][0]).toBe(
+                "/api/legal-resources?limit=0&offset=0",
+            );
+        });
+
+        it("fetches the filter options", async () => {
+            const options = { kinds: [], categories: [] };
+            fetchMock.mockResolvedValue(jsonResponse(options));
+
+            await expect(getLegalResourceFilterOptions()).resolves.toEqual(
+                options,
+            );
+            expect(fetchMock.mock.calls[0][0]).toBe(
+                "/api/legal-resources/filter-options",
+            );
+        });
+
+        it("fetches one resource by URL-encoded slug", async () => {
+            const resource = { slug: "a/b c", attribution: { source: "x" } };
+            fetchMock.mockResolvedValue(jsonResponse(resource));
+
+            await expect(getLegalResource("a/b c")).resolves.toEqual(resource);
+            expect(fetchMock.mock.calls[0][0]).toBe(
+                "/api/legal-resources/a%2Fb%20c",
+            );
+        });
     });
 });
