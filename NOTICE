@@ -1,0 +1,72 @@
+Accelerate Legal
+Copyright (C) 2026 Accelerate AI
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU Affero General Public License, version 3 only, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+The full license text is in the LICENSE file at the root of this repository, and
+is also available at <https://www.gnu.org/licenses/agpl-3.0.html>.
+
+
+UPSTREAM WORK
+-------------
+
+Accelerate Legal is a modified version of Mike, an open-source legal AI
+platform:
+
+    Mike — https://github.com/Open-Legal-Products/mike
+    Licensed under the GNU Affero General Public License, version 3 only.
+
+Accelerate AI has modified that work, beginning in 2026. The modifications
+include a rebrand from Mike to Accelerate Legal, a rebuilt design system and
+information architecture, the Legal AI resources catalog, and the macOS desktop
+application in `desktop/` together with the desktop authentication handoff it
+depends on. Everything else — the Next.js web application, the Express backend,
+the Word task-pane add-in, the database schema and migrations, the document
+processing and LLM integration, and the deployment tooling — originates upstream
+and remains substantially its work.
+
+The system assistant and tabular-review workflows this application ingests are
+maintained in a sibling catalog repository; upstream's is
+<https://github.com/Open-Legal-Products/mike-workflows>.
+
+Identifiers carrying the upstream product name are retained deliberately, not
+by oversight: the legacy session cookie, the credential-encryption salts, the
+export manifest signing context, the Word document-settings keys, and the
+workflow front-matter namespace are all read under their pre-rename spellings so
+that data created by an upstream deployment keeps working after an upgrade. See
+the initial commit message and `backend/src/lib/authSession.ts` for the full
+list.
+
+
+BUNDLED THIRD-PARTY CONTENT
+---------------------------
+
+Legal AI resources catalog
+    `backend/src/lib/resources/legalAiResources.json` and its copy under
+    `frontend/src/app/components/resources/` are generated from
+    <https://github.com/CSHaitao/Awesome-LegalAI-Resources>, which is MIT
+    licensed and asks that reusers link back to it. That link is shown on the
+    in-app Resources page and must stay there. See
+    `backend/src/lib/resources/ATTRIBUTION.md` for the full attribution and the
+    regeneration procedure.
+
+Dependencies installed from package registries are not vendored into this
+repository and carry their own licenses. Review them before redistributing a
+built artifact.
+
+
+A NOTE FOR ANYONE OPERATING THIS AS A SERVICE
+---------------------------------------------
+
+Section 13 of the AGPL applies to this application. If you run a modified
+version and let users interact with it over a network, those users must be
+offered the Corresponding Source of your modified version — publishing a
+repository and linking to it from the running application is the usual way to
+satisfy this. Deploying an unmodified copy from a public repository already
+satisfies it; deploying private modifications without an offer of source does
+not.

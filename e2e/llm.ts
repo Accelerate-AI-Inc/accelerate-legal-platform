@@ -13,16 +13,15 @@
  * the gate exists: keyless it just returns 500, and the specs already treat it
  * as best-effort (`.catch(() => null)`).
  *
- * In CI the key is the `ANTHROPIC_API_KEY` repository secret, which
- * `.github/workflows/e2e.yml` exposes both to the backend (backend/.env) and
- * to the Playwright process. Guarding with
+ * The key must reach both the backend (backend/.env) and the Playwright
+ * process; a CI job would supply it from a repository secret. Guarding with
  * `test.skip(!hasLlmKey, LLM_SKIP_REASON)` keeps a keyless run (a plain local
  * run without Ollama, or a fork PR with no secret access) green on the other 27
  * specs, while still running — and enforcing — the LLM specs whenever the key
- * is present. Setup steps: docs/e2e-ci.md, "Enable the LLM specs".
+ * is present. Setup steps: docs/e2e-testing.md, "Model-gated specs".
  *
  * When the key IS set, the specs' selectClaudeModel helper picks "Claude
- * Sonnet 4.6" in the ModelToggle (see docs/e2e-ci.md, "Model selection"), so
+ * Sonnet 4.6" in the ModelToggle (see docs/e2e-testing.md, "Model selection"), so
  * the unskipped specs submit against a model this repository actually ships.
  */
 export const hasLlmKey = Boolean(process.env.ANTHROPIC_API_KEY);

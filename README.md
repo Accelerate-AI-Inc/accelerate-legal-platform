@@ -8,6 +8,11 @@ drafting, and legal research.
 It combines a Next.js frontend, an Express backend, Supabase Auth/Postgres,
 and Cloudflare R2-compatible object storage.
 
+Accelerate Legal is a modified version of
+[Mike](https://github.com/Open-Legal-Products/mike) and is released under the
+same license, the GNU Affero General Public License v3.0. See
+[NOTICE](NOTICE) for what came from upstream and what was added here.
+
 ## Features
 
 - Chat with legal documents and open matters
@@ -68,6 +73,8 @@ authentication behavior, Ollama setup, and first-run guidance.
 | `scripts/import-legal-ai-resources.mjs` | Regenerates the Legal AI resources catalog |
 | `docker-compose.yml` | Local application and infrastructure stack |
 | `docs/` | Development, deployment, testing, and feature guides |
+| `LICENSE` | GNU Affero General Public License v3.0 |
+| `NOTICE` | Upstream attribution and bundled third-party content |
 
 ## Documentation
 
@@ -80,8 +87,19 @@ authentication behavior, Ollama setup, and first-run guidance.
 - [macOS desktop app](desktop/README.md)
 - [Tamper-evident exports](docs/tamper-evident-exports.md)
 - [Safe local testing](docs/safe-local-testing.md)
-- [End-to-end testing and CI](docs/e2e-ci.md)
+- [End-to-end testing](docs/e2e-testing.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 
+## License
 
+Accelerate Legal is free software under the
+[GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0-only).
+
+It is a modified version of [Mike](https://github.com/Open-Legal-Products/mike),
+which is licensed under the same terms. [NOTICE](NOTICE) records the upstream
+work, the modifications made here, and the third-party content this repository
+bundles.
+
+If you run a modified version of this software as a network service, AGPL
+section 13 requires you to offer its source to the people who use it.
