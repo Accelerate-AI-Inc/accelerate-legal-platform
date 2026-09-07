@@ -31,9 +31,9 @@
 - [Design system](design-system.md) — color/typography/spacing tokens, the shared
   `components/ui` primitives, and the accessibility baseline
 
-## Testing and CI
+## Testing
 
-- [End-to-end tests in CI](e2e-ci.md)
+- [End-to-end tests](e2e-testing.md)
 - [Backend unit-test coverage](testing-coverage.md)
 - [Frontend unit-test coverage](frontend-testing.md)
 - [Mutation testing and the SSE load harness](test-depth.md)

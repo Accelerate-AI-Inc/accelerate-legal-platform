@@ -95,10 +95,13 @@ npm run pack             # unpacked .app only
 Signing and notarization run automatically when these environment variables
 are set: `CSC_LINK` and `CSC_KEY_PASSWORD` (Developer ID Application
 certificate), plus `APPLE_API_KEY`, `APPLE_API_KEY_ID`, and `APPLE_API_ISSUER`
-(App Store Connect API key). `.github/workflows/desktop.yml` does this on
-`macos-latest` for tags named `desktop-v*` and uploads the installers, the
-`.blockmap` files, and `latest-mac.yml`. Attach all of them to a GitHub
-Release so installed copies can update.
+(App Store Connect API key).
+
+This repository ships no CI workflows, so release builds are made on a Mac with
+those variables exported. Attach the whole contents of `desktop/release/` to the
+GitHub Release — the `.dmg` and `.zip` files, the `.blockmap` files, and
+`latest-mac.yml` — because installed copies read `latest-mac.yml` to discover
+updates and will not update without it.
 
 Set `ACCELERATE_DESKTOP_DISABLE_UPDATES=1` to run a packaged build without
 update checks.

@@ -18,9 +18,9 @@ export default defineConfig({
     /* Retry on CI only */
     retries: process.env.CI ? 2 : 0,
     /* Reporter. On CI, "github" alone would REPLACE Playwright's default html
-       reporter, so playwright-report/ would never be written and the workflow's
-       artifact upload (docs/e2e-ci.md, "Failure artifacts") would have nothing
-       to ship. Listing both keeps the inline PR annotations AND generates the
+       reporter, so playwright-report/ would never be written and a CI job's
+       artifact upload (docs/e2e-testing.md, "Failure artifacts") would have
+       nothing to ship. Listing both keeps the inline PR annotations AND generates the
        HTML report; `open: "never"` stops the reporter from trying to launch a
        browser on the CI box after the run. */
     reporter: process.env.CI

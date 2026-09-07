@@ -27,9 +27,10 @@ Migration filenames follow `YYYYMMDD_NN_<name>.sql`.
 Keep the last applied migration filename with your deployment records. Do not
 blindly replay the directory against production: migrations are written for an
 expected starting schema, and a successful fresh install from `schema.sql` is
-not evidence that an older database has completed every upgrade step. The
-repository's schema-drift CI separately checks that its pinned historical
-baseline converges with the fresh schema after all later migrations run.
+not evidence that an older database has completed every upgrade step. Nothing
+in this repository verifies that automatically, so before an upgrade confirm on
+a scratch database that the fresh `schema.sql` shape and the migrated shape
+still converge.
 
 Apply the workflow catalog migration before deploying the matching backend
 release, then run the dedicated ingestion job from the built backend artifact:

@@ -189,12 +189,13 @@ behavior.
 5. Add native menus, a dock badge for running tabular reviews, and OS
    notifications for long-running workflow completion. These are the concrete
    reasons to prefer the desktop app over a browser tab.
-6. CI: a `desktop.yml` workflow with a matrix of `macos-latest` and
-   `windows-latest`. Sign and notarize on macOS using `APPLE_API_KEY`,
-   `APPLE_API_KEY_ID`, and `APPLE_API_ISSUER`, mirroring
-   `apps/desktop/scripts/notarize.cjs`. Sign on Windows using Azure Artifact
-   Signing exactly as `build-windows-installer.yml` does in legal-hermes.
-   Build on tags only; never sign a pull-request build.
+6. Release builds: this repository ships no CI workflows, so macOS
+   installers are built and notarized on a Mac (see `desktop/README.md`). If
+   that moves into CI later, use a `macos-latest` and `windows-latest` matrix,
+   sign and notarize on macOS with `APPLE_API_KEY`, `APPLE_API_KEY_ID`, and
+   `APPLE_API_ISSUER` mirroring `apps/desktop/scripts/notarize.cjs`, sign on
+   Windows using Azure Artifact Signing as `build-windows-installer.yml` does
+   in legal-hermes, build on tags only, and never sign a pull-request build.
 7. Backend: no code change. Set nothing new in `ALLOWED_ORIGINS` because the
    shell presents the hosted origin.
 

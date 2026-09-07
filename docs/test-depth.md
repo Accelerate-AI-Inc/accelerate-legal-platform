@@ -29,13 +29,12 @@ npm ci
 npm run test:mutation
 ```
 
-Takes about 3 minutes locally. Or run the **Mutation testing** workflow
-from the Actions tab (it also runs itself monthly as a drift check).
+Takes about 3 minutes locally.
 
 ### Reading the report
 
-Open `backend/reports/mutation/mutation.html` (in CI: download the
-`mutation-report` artifact). Click a file to see every mutant inline:
+Open `backend/reports/mutation/mutation.html`. Click a file to see every
+mutant inline:
 
 - **Killed (green)** — a test caught the change. Good.
 - **Survived (red)** — the suite still passed with that bug in place.
@@ -102,14 +101,12 @@ missed an SLO we never agreed on".
 
 Tune with `VUS`, `RAMP_DURATION`, `HOLD_DURATION`, `PROMPT`.
 
-### Running from GitHub Actions
+### Pointing it at a deployed stack
 
-The **SSE load test** workflow (`.github/workflows/loadtest.yml`) is
-manual-only and boots nothing itself: give it the base URL of an already
-running non-production stack you deployed — anything serving the backend
-API (`POST /chat` behind Supabase bearer auth) with real provider keys —
-and store a test user's token in the `LOADTEST_AUTH_TOKEN` repository
-secret. **Never point it at production.**
+The harness boots nothing itself: give it the base URL of an already
+running non-production stack — anything serving the backend API
+(`POST /chat` behind Supabase bearer auth) with real provider keys — plus a
+test user's token in `AUTH_TOKEN`. **Never point it at production.**
 
 ## Why not merge gates?
 
@@ -117,10 +114,9 @@ secret. **Never point it at production.**
   mutant count; the load test needs a live stack with real provider keys.
   Both are too slow/stateful to sit in front of every PR for a solo
   maintainer, and a flaky required check is worse than none.
-- **They detect drift, not correctness of a single diff.** The monthly
-  mutation cron catches "tests went hollow" over time; the load harness
-  is for before/after checks around streaming changes and incident
-  reproduction.
+- **They detect drift, not correctness of a single diff.** Mutation testing
+  catches "tests went hollow" over time; the load harness is for
+  before/after checks around streaming changes and incident reproduction.
 
 If the project grows contributors and a permanent staging stack, the
 natural next step is: mutation testing on changed security-lib files in

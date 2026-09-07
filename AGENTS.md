@@ -144,10 +144,14 @@ Existing deployments apply only files newer than their recorded version, in
 filename order. Do not assume every historical migration is safely replayable,
 and do not apply migrations to a remote or production database unless the user
 explicitly requests it and the target has been confirmed. See
-`docs/deployment.md` for deployment procedure and `.github/workflows/schema-drift.yml`
-for the fresh-versus-upgraded schema check.
+`docs/deployment.md` for the deployment procedure. Nothing checks
+automatically that `schema.sql` and the migrations still agree, so confirm that
+by hand whenever you change either.
 
 ## Verification
+
+This repository ships no CI workflows: the commands below are the only gate,
+so run the ones covering what you changed and report what they said.
 
 Choose the smallest verification that can catch the regression, and expand it
 for cross-cutting or high-risk changes. A build is not required after every
@@ -185,7 +189,7 @@ npm test --prefix frontend -- src/app/components/ui/button.test.tsx
 ```
 
 The stack and browser suites require their documented local services. Consult
-`docs/frontend-testing.md`, `docs/e2e-ci.md`, and `docs/safe-local-testing.md`
+`docs/frontend-testing.md`, `docs/e2e-testing.md`, and `docs/safe-local-testing.md`
 before running them. New behavior should normally have a regression test at
 the lowest useful layer: unit first, route integration second, and Playwright
 only when a real browser flow is necessary.
